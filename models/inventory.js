@@ -10,7 +10,7 @@ const inventorySchema = new Schema({
   },
   type: {
       type: String,
-      trim, true,
+      trim: true,
   },
   length: {
     type: String,
