@@ -10,24 +10,24 @@ import Listing from "./pages/Listings/Listing";
 import "./App.css";
 
 function App() {
-  <Router>
-    return (
-    <div>
-      {/* Navbar here */}
-      <main className="App">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/listing" component={Listing} />
-          <Route exact path="/listing/:id" component={Detail} />
-          <Route exact path="/admin" component={Login} />
-          <Route exact path="/admin/dashboard" component={Dashboard} />
-          <Route exact path="/admin/addItem" component={AddItem} />
-          <Route exact path="/admin/editItem/:id" component={EditItem} />
-        </Switch>
-        </main>;
-    </div>
-    )
-  </Router>;
+  return (
+    <Router>
+      <div>
+        {/* Navbar here */}
+        <main className="App">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/listing" component={Listing} />
+            <Route exact path="/listing/:id" component={Detail} />
+            <Route exact path="/admin" component={Login} />
+            <Route exact path="/admin/dashboard" component={Dashboard} />
+            <Route exact path="/admin/addItem" component={AddItem} />
+            <Route exact path="/admin/editItem/:id" component={EditItem} />
+          </Switch>
+        </main>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
