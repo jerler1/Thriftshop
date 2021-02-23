@@ -9,7 +9,7 @@ const employeeSchema = new Schema({
   },
   storefront: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: storefront,
+      ref: Storefront,
   },
   isAdmin: {
     type: Boolean,
