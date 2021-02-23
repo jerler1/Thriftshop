@@ -1,3 +1,7 @@
 module.exports = {
-    StoreFront: require("./storefront.js")
+    Storefront: require("./storefront"),
+    Inventory: require("./inventory"),
+    Employee: require("./employee"),
+    Invoice: require("./invoice"),
+    Customer: require("./customer")
 }
