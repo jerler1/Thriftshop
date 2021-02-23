@@ -1,12 +1,15 @@
-import './App.css';
+import "./App.css";
+import "tailwindcss/dist/tailwind.min.css"
 import Navbar from "./components/Navbar/Navbar";
-
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+      </div>
+    </BrowserRouter>
   );
 }
 
