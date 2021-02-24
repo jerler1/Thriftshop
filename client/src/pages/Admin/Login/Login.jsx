@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
-import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../../../hooks/use-auth";
 import "./Login.css";
 
 const Login = (props) => {
@@ -11,20 +11,17 @@ const Login = (props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
+  const auth = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    axios
-      .post("/login", formData)
-      .then(({ data }) => {
-        console.log(data);
-        // login was successful
-        setIsLoading(false);
-        history.push('/admin/dashboard');
-      })
-      .catch((err) => console.log(err));
+    auth.login(formData.email, formData.password).then((data) => {
+      console.log(data);
+      setIsLoading(false);
+      history.push("/admin/dashboard");
+    });
   };
 
   const handleInputChange = (e) => {
