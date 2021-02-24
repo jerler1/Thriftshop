@@ -1,44 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+// import SearchBar from "../SearchBar/SearchBar";
+import "./Navbar.css";
 
 const Navbar = () => {
-  // document.getElementById("hamburger").onclick = function toggleMenu() {
-  //     const navToggle = document.getElementsByClassName("toggle");
-  //     for (let i=0; i< navToggle.length; i++) {
-  //         navToggle.item(i).classList.toggle("hidden");
-  //     }
-  // };
+  const [isActive, setIsActive] = useState(false);
+  const setActive = () => {
+    setIsActive(!isActive);
+  };
 
   return (
-    <nav className="flex flex-wrap items-center justify-between p-5 bg-gray-300">
-      <h1 className="font-bold text-3xl">Thrift World</h1>
-      <p className="object-left">The Thrift Shop Shop</p>
-      <SearchBar />
-      <div>
-          <div className="flex md:hidden">
-        <button id="hamburger">
-          <i className="fas fa-bars toggle block" />
-          <i className="fas fa-times toggle hidden" />
-        </button>
-      </div>
-      <div class="toggle hidden md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 border-t-2 border-blue-900 md:border-none">
-        <Link className="block md:inline-block text-blue-900 hover:text-blue-600 px-3 py-3 border-b-2 border-blue-900 md:border-none">
-          Link 1
-        </Link>
-        <Link className="block md:inline-block text-blue-900 hover:text-blue-600 px-3 py-3 border-b-2 border-blue-900 md:border-none">
-          Link 2
-        </Link>
-        <Link className="block md:inline-block text-blue-900 hover:text-blue-600 px-3 py-3 border-b-2 border-blue-900 md:border-none">
-          Link 3
-        </Link>
-        <Link className="block md:inline-block text-blue-900 hover:text-blue-600 px-3 py-3 border-b-2 border-blue-900 md:border-none">
-          Link 4
-        </Link>
+    <nav
+      className="navbar is-warning navbar-height"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div className="navbar-start">
+        <div className="navbar-brand">
+          <Link className="navbar-item navbrand" to="/">
+            Thrift Shop²
+          </Link>
+          <p className="navbar-item tag-line">The Thrift Shop's Shop</p>
+          <div className="navbar-burger burger-box" onClick={setActive}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
       </div>
 
+      <SearchBar />
+      <div className={isActive ? "navbar-menu is-active" : "navbar-menu"}>
+        <div className="navbar-end">
+          <Link to="/admin" className="navbar-item">
+            Admin Login
+          </Link>
+        </div>
       </div>
-      
     </nav>
   );
 };
