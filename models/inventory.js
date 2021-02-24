@@ -7,14 +7,17 @@ const inventorySchema = new Schema({
   name: {
     type: String,
     trim: true,
+    required: true,
   },
   description: {
     type: String,
     trim: true,
+    required: true,
   },
   category: {
       type: String,
       trim: true,
+      required: true,
   },
   length: {
     type: String,
@@ -35,17 +38,21 @@ const inventorySchema = new Schema({
   price: {
       type: Currency,
       trim: true,
+      required: true,
   },
   condition: {
     type: String,
     trim: true,
+    required: true,
   },
   image: {
       type: Array,
+      required: true,
   },
   status: {
       type: String,
       trim: true,
+      required: true,
   }
 });
 

@@ -6,14 +6,17 @@ const storefrontSchema = new Schema({
   name: {
     type: String,
     trim: true,
+    required: true,
   },
   owner: {
       type: String,
-      trim, true,
+      trim: true,
+      required: true,
   },
   address1: {
     type: String,
     trim: true,
+    required: true,
   },
   address2: {
     type: String,
@@ -22,14 +25,17 @@ const storefrontSchema = new Schema({
   city: {
       type: String,
       trim: true,
+      required: true,
   },
   state: {
       type: String,
       trim: true,
+      required: true,
   },
   zip: {
       type: String,
       trim: true,
+      required: true,
   },
   phone: {
     type: String,
