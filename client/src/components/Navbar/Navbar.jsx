@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
-// import SearchBar from "../SearchBar/SearchBar";
+import { useAuth } from "../../hooks/use-auth";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -10,6 +10,20 @@ const Navbar = () => {
     setIsActive(!isActive);
   };
 
+  const auth = useAuth();
+  const history = useHistory();
+
+  const handleLogout = () => {
+    auth
+      .logout()
+      .then(() => {
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  
   return (
     <nav
       className="navbar is-warning navbar-height"
@@ -33,9 +47,22 @@ const Navbar = () => {
       <SearchBar />
       <div className={isActive ? "navbar-menu is-active" : "navbar-menu"}>
         <div className="navbar-end">
-          <Link to="/admin" className="navbar-item">
-            Admin Login
-          </Link>
+          {auth.user ? (
+            <Link to="/admin/dashboard" className="navbar-item">
+              Dashboard
+            </Link>
+          ) : (
+            ""
+          )}
+          {!auth.user ? (
+            <Link to="/admin" className="navbar-item">
+              Admin Login
+            </Link>
+          ) : (
+            <Link className="navbar-item" onClick={handleLogout}>
+              Logout
+            </Link>
+          )}
         </div>
       </div>
     </nav>
