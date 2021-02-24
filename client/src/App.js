@@ -8,25 +8,28 @@ import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Listing from "./pages/Listings/Listing";
 import Navbar from "./components/Navbar/Navbar";
+import { ProvideAuth } from "./hooks/use-auth";
 import "./App.css";
 
 function App() {
   return (
     <Router>
-      <div>
-        <Navbar />
-        <main className="App">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/listing" component={Listing} />
-            <Route exact path="/listing/:id" component={Detail} />
-            <Route exact path="/admin" component={Login} />
-            <Route exact path="/admin/dashboard" component={Dashboard} />
-            <Route exact path="/admin/addItem" component={AddItem} />
-            <Route exact path="/admin/editItem/:id" component={EditItem} />
-          </Switch>
-        </main>
-      </div>
+      <ProvideAuth>
+        <div>
+          <Navbar />
+          <main className="App">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/listing" component={Listing} />
+              <Route exact path="/listing/:id" component={Detail} />
+              <Route exact path="/admin" component={Login} />
+              <Route exact path="/admin/dashboard" component={Dashboard} />
+              <Route exact path="/admin/addItem" component={AddItem} />
+              <Route exact path="/admin/editItem/:id" component={EditItem} />
+            </Switch>
+          </main>
+        </div>
+      </ProvideAuth>
     </Router>
   );
 }
