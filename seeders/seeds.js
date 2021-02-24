@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Storefront = require("../models/storefront");
 const Employee = require("../models/employee");
+const Inventory = require("../models/inventory");
+const Invoice = require("../models/invoice");
 
 mongoose
     .connect(process.env.MONGODB_URI || "mongodb://localhost/thriftshop", {
@@ -16,7 +18,7 @@ mongoose
         console.log("Error connecting to MongoDB", err);
     });
 
-let storefrontSeed = [
+const storefrontSeeds = [
     {
         name: "Nathan's Thrift Shop",
         owner: "Nathan Castaldi",
@@ -29,37 +31,65 @@ let storefrontSeed = [
     }
 ]
 
-let employeeSeed = [
+const employeeSeeds = [
     {
-        firstname: {
-            type: String,
-            trim: true,
-            required: true,
-        },
-        lastname: {
-            type: String,
-            trim: true,
-            required: true,
-        },
-        username: {
-            type: String,
-            trim: true,
-            required: true,
-        },
-        storefront: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: Storefront,
-            required: true,
-        },
-        isAdmin: {
-            type: Boolean,
-            trim: true,
-        },
+        firstname: "Nathan",
+        lastname: "Castaldi",
+        username: "ncastaldi",
+        storefront: "6036c82a548b87065cce3af0",
+        isAdmin: true,
+    },
+    {
+        firstname: "Seraphina",
+        lastname: "Castaldi",
+        username: "scastaldi",
+        storefront: "6036c82a548b87065cce3af0",
+        isAdmin: false,
+    },
+]
+
+const inventorySeeds = [
+    {
+        name: "Oak Dresser",
+        description: "Finely made dresser",
+        category: "Furniture",
+        price: "54.89",
+        condition: "Good",
+        image: "source_url",
+        status: "Available"
+      },
+      {
+        name: "The Starry Night",
+        description: "Painting by Vincent van Gogh",
+        category: "Art",
+        price: "884.67",
+        condition: "Excellent",
+        image: "source_url",
+        status: "Available"
+      }
+]
+
+const invoiceSeeds = [
+    {
+        storeID: "6036c82a548b87065cce3af0",
+        customerName: "John Doe",
+        customerEmail: "john.doe@gmail.com",
+        purchasedItems: [
+            {
+                itemID: {
+                    type: "6036cc0f09724c16dc9aac92",
+                },
+                description: {
+                    type: "Oak Dresser",
+                }
+            }
+        ],
+        status: "Paid"
     }
 ]
 
 Storefront.deleteMany({})
-    .then(() => Storefront.collection.insertMany(storefrontSeed))
+    .then(() => Storefront.collection.insertMany(storefrontSeeds))
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);
@@ -70,7 +100,29 @@ Storefront.deleteMany({})
     });
 
 Employee.deleteMany({})
-    .then(() => Employee.collection.insertMany(employeeSeed))
+    .then(() => Employee.collection.insertMany(employeeSeeds))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+Inventory.deleteMany({})
+    .then(() => Inventory.collection.insertMany(inventorySeeds))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+Invoice.deleteMany({})
+    .then(() => Invoice.collection.insertMany(invoiceSeeds))
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);
