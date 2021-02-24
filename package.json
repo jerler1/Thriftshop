@@ -1,5 +1,5 @@
 {
-  "name": "Thiftshop",
+  "name": "thriftshop",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,7 +10,8 @@
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "seed": "node seeders/seeds.js"
   },
   "repository": {
     "type": "git",
