@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Storefront = require("../models/storefront");
+const Employee = require("../models/employee");
 
 mongoose
     .connect(process.env.MONGODB_URI || "mongodb://localhost/thriftshop", {
@@ -28,8 +29,48 @@ let storefrontSeed = [
     }
 ]
 
+let employeeSeed = [
+    {
+        firstname: {
+            type: String,
+            trim: true,
+            required: true,
+        },
+        lastname: {
+            type: String,
+            trim: true,
+            required: true,
+        },
+        username: {
+            type: String,
+            trim: true,
+            required: true,
+        },
+        storefront: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: Storefront,
+            required: true,
+        },
+        isAdmin: {
+            type: Boolean,
+            trim: true,
+        },
+    }
+]
+
 Storefront.deleteMany({})
     .then(() => Storefront.collection.insertMany(storefrontSeed))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+Employee.deleteMany({})
+    .then(() => Employee.collection.insertMany(employeeSeed))
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);
