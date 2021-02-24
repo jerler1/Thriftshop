@@ -74,6 +74,15 @@ const AddItem = (props) => {
             </div>
           </div>
         </div>
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea
+              class="textarea is-primary"
+              placeholder="Primary textarea"
+            ></textarea>
+          </div>
+        </div>
       </div>
     </div>
   );
