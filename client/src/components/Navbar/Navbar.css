@@ -1,0 +1,27 @@
+.whole-nav {
+    height: 90px;
+}
+
+.navbrand {
+    font-weight: 600;
+    font-size: xx-large;
+}
+
+.burger-box {
+    margin-top : 7px;
+}
+
+.tag-line {
+    margin-left: -15px;
+    margin-top: 12px;
+}
+
+.search-bar {
+    flex-grow: 1 !important;
+    max-width: 150% !important;
+}
+
+/* .input, .textarea {
+    max-width: none !important;
+    width: 200% !important;
+} */

@@ -7,13 +7,14 @@ import Login from "./pages/Admin/Login/Login";
 import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Listing from "./pages/Listings/Listing";
+import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <div>
-        {/* Navbar here */}
+        <Navbar />
         <main className="App">
           <Switch>
             <Route exact path="/" component={Home} />
