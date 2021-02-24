@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Inventory = require("./inventory");
 
 const Schema = mongoose.Schema;
 
@@ -11,7 +12,18 @@ const invoiceSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: Customer
     },
-    //TODO: Add array of items to be purchased.
+    purchasedItems: [
+        {
+            itemID: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: Inventory,
+            },
+            description: {
+                type: String,
+                ref: Inventory,
+            }
+        }
+    ]
 });
 
 const Invoice = mongoose.model("Invoice", invoiceSchema);
