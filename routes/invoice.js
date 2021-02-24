@@ -11,7 +11,6 @@ router
 router
     .route("/:id")
     .get(invoiceController.findById)
-    .put(invoiceController.update)
-    .delete(invoiceController.remove);
+    .put(invoiceController.update);
 
 module.exports = router;
