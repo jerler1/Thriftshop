@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the storefrontController
 module.exports = {
     findAll: function (req, res) {
-        db.Storefront.find(req.query)
+        db.Storefront.find()
             .sort({ date: -1 })
             .then((dbStorefront) => res.json(dbStorefront))
             .catch((err) => res.status(422).json(err));
