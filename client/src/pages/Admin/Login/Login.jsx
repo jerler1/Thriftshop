@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import "./Login.css";
 
@@ -8,6 +9,8 @@ const Login = (props) => {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +22,7 @@ const Login = (props) => {
         console.log(data);
         // login was successful
         setIsLoading(false);
+        history.push('/admin/dashboard');
       })
       .catch((err) => console.log(err));
   };
