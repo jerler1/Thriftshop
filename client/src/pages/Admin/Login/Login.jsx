@@ -17,11 +17,16 @@ const Login = (props) => {
     e.preventDefault();
     setIsLoading(true);
 
-    auth.login(formData.email, formData.password).then((data) => {
-      console.log(data);
-      setIsLoading(false);
-      history.push("/admin/dashboard");
-    });
+    auth
+      .login(formData.email, formData.password)
+      .then((data) => {
+        console.log(data);
+        setIsLoading(false);
+        history.push("/admin/dashboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleInputChange = (e) => {
