@@ -8,6 +8,10 @@ const inventorySchema = new Schema({
     type: String,
     trim: true,
   },
+  description: {
+    type: String,
+    trim: true,
+  }
   type: {
       type: String,
       trim: true,
