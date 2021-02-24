@@ -12,7 +12,7 @@ const inventorySchema = new Schema({
     type: String,
     trim: true,
   },
-  type: {
+  category: {
       type: String,
       trim: true,
   },

@@ -8,9 +8,13 @@ const invoiceSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: Storefront
     },
-    customerID: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: Customer
+    customerName: {
+        type: String,
+        trim: true,
+    },
+    customerEmail: {
+        type: String,
+        trim: true,
     },
     purchasedItems: [
         {
@@ -23,7 +27,11 @@ const invoiceSchema = new Schema({
                 ref: Inventory,
             }
         }
-    ]
+    ],
+    status: {
+        type: String,
+        trim: true,
+    }
 });
 
 const Invoice = mongoose.model("Invoice", invoiceSchema);
