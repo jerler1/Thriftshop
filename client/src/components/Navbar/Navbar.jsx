@@ -46,24 +46,15 @@ const Navbar = () => {
 
       <SearchBar />
       <div className={isActive ? "navbar-menu is-active" : "navbar-menu"}>
-        <div className="navbar-end">
-          {auth.user ? (
-            <Link to="/admin/dashboard" className="navbar-item">
-              Dashboard
-            </Link>
-          ) : (
-            ""
-          )}
-          {!auth.user ? (
-            <Link to="/admin" className="navbar-item">
+        {!auth.user ? <div className="navbar-end"><Link to="/admin" className="navbar-item">
               Admin Login
-            </Link>
-          ) : (
-            <Link className="navbar-item" onClick={handleLogout}>
+            </Link></div> : <div className="navbar-end"><Link to="/admin/dashboard" className="navbar-item">
+              Dashboard
+            </Link><Link className="navbar-item" to="/admin/addItem">
+              Add Items
+            </Link><Link className="navbar-item" onClick={handleLogout}>
               Logout
-            </Link>
-          )}
-        </div>
+            </Link></div>}
       </div>
     </nav>
   );
