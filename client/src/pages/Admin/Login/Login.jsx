@@ -7,15 +7,18 @@ const Login = (props) => {
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     axios
       .post("/login", formData)
       .then(({ data }) => {
         console.log(data);
-        // login was successful 
+        // login was successful
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   };
@@ -30,17 +33,48 @@ const Login = (props) => {
   };
 
   return (
-    <div>
+    <div className="box">
+      <h2 className="title">Log in to your account</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" value={formData.email} onChange={handleInputChange} />
+        <div className="field">
+          <label className="label" htmlFor="email">
+            Email
+          </label>
+          <div className="control">
+            <input
+              className="input"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="admin@example.com"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" value={formData.password} onChange={handleInputChange} />
+        <div className="field">
+          <label className="label" htmlFor="password">
+            Password
+          </label>
+          <div className="control">
+            <input
+              className="input"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
         </div>
-        <button type="submit">Log In</button>
+        <div className="field">
+          <button className={"button is-primary" + (isLoading ? " is-loading" : "")} type="submit">
+            Log In
+          </button>
+        </div>
       </form>
     </div>
   );
