@@ -9,7 +9,7 @@ router
 
 // Matches with "/api/inventory/:id"
 router
-    .route("/:id"
+    .route("/:id")
         .get(inventoryController.findById)
         .put(inventoryController.update)
         .delete(inventoryController.remove);
