@@ -3,5 +3,4 @@ module.exports = {
     Inventory: require("./inventory"),
     Employee: require("./employee"),
     Invoice: require("./invoice"),
-    Customer: require("./customer")
 }
