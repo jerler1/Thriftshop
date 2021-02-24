@@ -5,6 +5,6 @@ const loginRoutes = require("./login");
 const inventoryRoutes = require("./inventory");
 
 router.use(loginRoutes);
-router.use(inventoryRoutes);
+router.use("/inventory", inventoryRoutes);
 
 module.exports = router;
