@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const storefrontController = require("../controllers/storefrontController");
 
-// Matches with "/api/inventory"
+// Matches with "/api/storefront"
 router
     .route("/")
     .get(storefrontController.findAll);
 
-// Matches with "/api/inventory/:id"
+// Matches with "/api/storefront/:id"
 router
     .route("/:id")
     .get(storefrontController.findById)
