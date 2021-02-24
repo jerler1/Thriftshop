@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./Login.css";
 
 const Login = (props) => {
@@ -9,9 +10,14 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ ...formData });
-    console.log("will be submitted.");
-    //TODO: Actually submit the form.
+
+    axios
+      .post("/login", formData)
+      .then(({ data }) => {
+        console.log(data);
+        // login was successful 
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleInputChange = (e) => {
