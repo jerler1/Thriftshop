@@ -21,6 +21,12 @@ const api = {
       })
       .catch((err) => console.log("API error: ", err));
   },
+  getStorefront(id) {
+    return axios
+      .get(`/api/storefront/${id}`)
+      .then(({ data }) => data)
+      .catch((err) => err);
+  },
 };
 
 export default api;
