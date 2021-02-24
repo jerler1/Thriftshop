@@ -35,67 +35,43 @@ const AddItem = (props) => {
           </button>
         </div>
         <div className="column has-background-danger-dark">
-          <div class="field" />
-          <label class="label">Name</label>
+          <div class="field">
+            <label class="label">Label</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g. Dresser" />
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Category</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Text input" />
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Username</label>
-          <div class="control has-icons-left has-icons-right">
-            <input
-              class="input is-success"
-              type="text"
-              placeholder="Text input"
-              value="bulma"
-            />
-            <span class="icon is-small is-left">
-              <i class="fas fa-user"></i>
-            </span>
-            <span class="icon is-small is-right">
-              <i class="fas fa-check"></i>
-            </span>
-          </div>
-          <p class="help is-success">This username is available</p>
-        </div>
-
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control has-icons-left has-icons-right">
-            <input
-              class="input is-danger"
-              type="email"
-              placeholder="Email input"
-              value="hello@"
-            />
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-            <span class="icon is-small is-right">
-              <i class="fas fa-exclamation-triangle"></i>
-            </span>
-          </div>
-          <p class="help is-danger">This email is invalid</p>
-        </div>
-
-        <div class="field">
-          <label class="label">Subject</label>
-          <div class="control">
-            <div class="select">
-              <select>
-                <option>Select dropdown</option>
-                <option>With options</option>
+            <div className="select">
+              <select name="category">
+                <option value="Select One">Select One</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Blender">Blender</option>
+                <option value="Sofa">Sofa</option>
               </select>
             </div>
           </div>
         </div>
-
         <div class="field">
-          <label class="label">Message</label>
+          <label class="label">Price</label>
           <div class="control">
-            <textarea class="textarea" placeholder="Textarea"></textarea>
+            <input class="input" type="text" placeholder="e.g. $10" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Condition</label>
+          <div class="control">
+            <div className="select">
+              <select name="category">
+                <option value="Select One">Select One</option>
+                <option value="Slightly Damaged">Slightly Damaged</option>
+                <option value="Destroyed">Destroyed</option>
+                <option value="Moderately Dinged">Moderately Dinged</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
