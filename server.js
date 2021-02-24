@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static("client/build"));
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/mern-starter", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/thriftshop", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
