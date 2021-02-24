@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the employeeController
 module.exports = {
     findAll: function (req, res) {
-        db.Employee.find(req.query)
+        db.Employee.find()
             .sort({ date: -1 })
             .then((dbEmployee) => res.json(dbEmployee))
             .catch((err) => res.status(422).json(err));

@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the invoiceController
 module.exports = {
     findAll: function (req, res) {
-        db.Invoice.find(req.query)
+        db.Invoice.find()
             .sort({ date: -1 })
             .then((dbInvoice) => res.json(dbInvoice))
             .catch((err) => res.status(422).json(err));

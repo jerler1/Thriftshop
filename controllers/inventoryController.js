@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the inventoryController
 module.exports = {
     findAll: function (req, res) {
-        db.Inventory.find(req.query)
+        db.Inventory.find()
             .sort({ date: -1 })
             .then((dbInventory) => res.json(dbInventory))
             .catch((err) => res.status(422).json(err));
