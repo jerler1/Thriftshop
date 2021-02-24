@@ -8,7 +8,6 @@ import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Listing from "./pages/Listings/Listing";
 import Navbar from "./components/Navbar/Navbar";
-import "tailwindcss/dist/tailwind.min.css";
 import "./App.css";
 
 function App() {
