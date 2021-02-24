@@ -10,8 +10,8 @@ router
 // Matches with "/api/inventory/:id"
 router
     .route("/:id")
-        .get(inventoryController.findById)
-        .put(inventoryController.update)
-        .delete(inventoryController.remove);
+    .get(inventoryController.findById)
+    .put(inventoryController.update)
+    .delete(inventoryController.remove);
 
 module.exports = router;
