@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ItemForm from "../../../components/ItemForm/ItemForm";
 import "./AddItem.css";
 // import { Image } from "cloudinary-react";
 
@@ -35,7 +36,7 @@ const AddItem = (props) => {
           </button>
         </div>
         <div className="column has-background-danger-dark">
-
+          <ItemForm />
         </div>
       </div>
     </div>
