@@ -47,7 +47,7 @@ const AddItem = () => {
 
   return (
     <div>
-      <div className="columns center">
+      <div className="columns center columnsCustom">
         <div className="column leftCol">
           <figure className="image center">
             <img src={imageSource} alt="placeholder" />
