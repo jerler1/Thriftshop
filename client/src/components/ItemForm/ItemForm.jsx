@@ -22,7 +22,6 @@ const ItemForm = (props) => {
           <div className="select">
             <select
               name="category"
-              name="category"
               value={props.category}
               onChange={props.handleInputChange}
             >
@@ -52,7 +51,6 @@ const ItemForm = (props) => {
         <div className="control">
           <div className="select">
             <select
-              name="category"
               name="condition"
               value={props.condition}
               onChange={props.handleInputChange}
