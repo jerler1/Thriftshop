@@ -21,6 +21,14 @@ const api = {
       })
       .catch((err) => console.log("API error: ", err));
   },
+  editItem(id) {
+    return axios
+      .get(`/api/inventory/${id}`)
+      .then(({ data }) => {
+        return data;
+      })
+      .catch((err) => console.log("API error: ", err));
+  },
 };
 
 export default api;
