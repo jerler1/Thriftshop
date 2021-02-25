@@ -2,7 +2,7 @@ import React from "react";
 
 const ItemForm = (props) => {
   return (
-    <div>
+    <form onSubmit={props.handleFormSubmit}>
       <div className="field">
         <label className="label">Item Name</label>
         <div className="control">
@@ -11,6 +11,8 @@ const ItemForm = (props) => {
             className="input formInput"
             type="text"
             placeholder="e.g. Dresser"
+            name="name"
+            value={props.name}
           />
         </div>
       </div>
@@ -18,7 +20,12 @@ const ItemForm = (props) => {
         <label className="label">Category</label>
         <div className="control">
           <div className="select">
-            <select name="category" onChange={props.handleInputChange}>
+            <select
+              name="category"
+              name="category"
+              value={props.category}
+              onChange={props.handleInputChange}
+            >
               <option value="Select One">Select One</option>
               <option value="Furniture">Furniture</option>
               <option value="Blender">Blender</option>
@@ -35,6 +42,8 @@ const ItemForm = (props) => {
             className="input formInput"
             type="text"
             placeholder="e.g. 10.50"
+            name="price"
+            value={props.price}
           />
         </div>
       </div>
@@ -42,7 +51,12 @@ const ItemForm = (props) => {
         <label className="label">Condition</label>
         <div className="control">
           <div className="select">
-            <select name="category" onChange={props.handleInputChange}>
+            <select
+              name="category"
+              name="condition"
+              value={props.condition}
+              onChange={props.handleInputChange}
+            >
               <option value="Select One">Select One</option>
               <option value="Slightly Damaged">Slightly Damaged</option>
               <option value="Destroyed">Destroyed</option>
@@ -56,17 +70,22 @@ const ItemForm = (props) => {
         <div className="control">
           <textarea
             onChange={props.handleInputChange}
-            className="textarea is-primary" id="formInput"
+            className="textarea is-primary"
+            id="formInput"
             placeholder="Primary textarea"
+            name="description"
+            value={props.description}
           ></textarea>
         </div>
       </div>
       <div className="field">
         <div className="control">
-          <button className="button is-link">Submit</button>
+          <button type="submit" className="button is-link">
+            Submit
+          </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

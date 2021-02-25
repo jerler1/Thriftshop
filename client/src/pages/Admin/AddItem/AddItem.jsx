@@ -35,6 +35,7 @@ const AddItem = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    console.log(event);
     API.addItemSubmit(formValues)
       .then((res) => {
         console.log(res);
@@ -46,9 +47,9 @@ const AddItem = () => {
 
   return (
     <div>
-      <div className="columns center">
+      <div className="columns center columnsCustom">
         <div className="column leftCol">
-          <figure className="image center">
+          <figure className="imageCustom center">
             <img src={imageSource} alt="placeholder" />
           </figure>
           <button className="button is-info center" onClick={widget.open}>
@@ -57,6 +58,7 @@ const AddItem = () => {
         </div>
         <div className="column rightCol">
           <ItemForm
+            {...formValues}
             handleInputChange={handleInputChange}
             handleFormSubmit={handleFormSubmit}
           />

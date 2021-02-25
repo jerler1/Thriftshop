@@ -13,9 +13,9 @@ const api = {
       .then(({ data }) => data)
       .catch((err) => console.log("API ERROR: ", err));
   },
-  addItemSubmit({ name, category, price, condition, description }) {
+  addItemSubmit(formObject) {
     return axios
-      .post("/api/inventory", { name, category, price, condition, description })
+      .post("/api/inventory", formObject)
       .then(({ data }) => {
         console.log(data);
       })
