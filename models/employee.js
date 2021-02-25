@@ -14,7 +14,12 @@ const employeeSchema = new Schema({
     trim: true,
     required: true,
   },
-  username: {
+  email: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+  password: {
     type: String,
     trim: true,
     required: true,
