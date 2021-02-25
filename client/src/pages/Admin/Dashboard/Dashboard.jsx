@@ -1,5 +1,5 @@
 import React from 'react';
-import GalleryContainer from "../../../components/GalleryContainer/GalleryContainer"
+import GalleryContainer from "../../../components/GalleryContainer/GalleryContainer";
 import "./Dashboard.css";
 
 const Dashboard = (props) => {
