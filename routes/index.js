@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const loginRoutes = require("./login");
+const authRoutes = require("./auth");
 const inventoryRoutes = require("./inventory");
 const employeeRoutes = require("./employee");
 const storefrontRoutes = require("./storefront");
 const invoiceRoutes = require("./invoice");
 
-router.use(loginRoutes);
+router.use(authRoutes);
 router.use("/inventory", inventoryRoutes);
 router.use("/employee", employeeRoutes);
 router.use("/storefront", storefrontRoutes);

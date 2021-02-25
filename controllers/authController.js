@@ -10,4 +10,12 @@ const login = (req, res) => {
   });
 };
 
-module.exports = login;
+const logout = (req, res) => {
+  // destroy the session 
+  res.status(200).send();
+}
+
+module.exports = {
+  login,
+  logout,
+};
