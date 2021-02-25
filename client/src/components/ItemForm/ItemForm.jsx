@@ -6,14 +6,19 @@ const ItemForm = (props) => {
       <div className="field">
         <label className="label">Item Name</label>
         <div className="control">
-          <input className="input" type="text" placeholder="e.g. Dresser" />
+          <input
+            onChange={props.handleInputChange}
+            className="input formInput"
+            type="text"
+            placeholder="e.g. Dresser"
+          />
         </div>
       </div>
       <div className="field">
         <label className="label">Category</label>
         <div className="control">
           <div className="select">
-            <select name="category">
+            <select name="category" onChange={props.handleInputChange}>
               <option value="Select One">Select One</option>
               <option value="Furniture">Furniture</option>
               <option value="Blender">Blender</option>
@@ -25,14 +30,19 @@ const ItemForm = (props) => {
       <div className="field">
         <label className="label">Price</label>
         <div className="control">
-          <input className="input" type="text" placeholder="e.g. 10.50" />
+          <input
+            onChange={props.handleInputChange}
+            className="input formInput"
+            type="text"
+            placeholder="e.g. 10.50"
+          />
         </div>
       </div>
       <div className="field">
         <label className="label">Condition</label>
         <div className="control">
           <div className="select">
-            <select name="category">
+            <select name="category" onChange={props.handleInputChange}>
               <option value="Select One">Select One</option>
               <option value="Slightly Damaged">Slightly Damaged</option>
               <option value="Destroyed">Destroyed</option>
@@ -45,7 +55,8 @@ const ItemForm = (props) => {
         <label className="label">Description</label>
         <div className="control">
           <textarea
-            className="textarea is-primary"
+            onChange={props.handleInputChange}
+            className="textarea is-primary" id="formInput"
             placeholder="Primary textarea"
           ></textarea>
         </div>

@@ -1,6 +1,7 @@
 .image {
     width: 600px;
     padding-bottom: 10px;
+    padding-top: 100px;
 }
 .center {
     display:block;
@@ -10,4 +11,14 @@
 
 .leftCol {
     padding-right: 0 !important;
+}
+
+.rightCol {
+    width: 70% !important;
+    margin-right: 50px;
+    padding-right: 300px;
+}
+
+.columns {
+    padding-top: 100px;
 }

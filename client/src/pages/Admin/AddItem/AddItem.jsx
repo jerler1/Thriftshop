@@ -3,18 +3,17 @@ import ItemForm from "../../../components/ItemForm/ItemForm";
 import "./AddItem.css";
 import API from "../../../api/index";
 
-
 const AddItem = () => {
   const [imageSource, setImageSource] = useState(
     "http://res.cloudinary.com/thriftshopshop/image/upload/v1614196967/thriftshopshop/hzkbtocbzgzenprljfao.jpg"
   );
   const [formValues, setFormValues] = useState({
-      name: "",
-      category: "",
-      price: "",
-      condition: "",
-      description: ""
-  })
+    name: "",
+    category: "",
+    price: "",
+    condition: "",
+    description: "",
+  });
 
   const widget = window.cloudinary.createUploadWidget(
     {
@@ -29,31 +28,38 @@ const AddItem = () => {
     }
   );
 
-handleInputChange= event => {
-    const { name, value } = event.target
-    setFormValues({...formValues, [name]: value})
-}
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
 
-  handleFormSubmit = event => {
-      event.preventDefault();      
-  }
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    API.addItemSubmit(formValues)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
-      <section className="section">
-        <h1>This is the add item.</h1>
-      </section>
       <div className="columns center">
         <div className="column leftCol">
           <figure className="image center">
             <img src={imageSource} alt="placeholder" />
           </figure>
-          <button className="center" onClick={widget.open}>
+          <button className="button is-info center" onClick={widget.open}>
             Upload Image
           </button>
         </div>
-        <div className="column">
-          <ItemForm />
+        <div className="column rightCol">
+          <ItemForm
+            handleInputChange={handleInputChange}
+            handleFormSubmit={handleFormSubmit}
+          />
         </div>
       </div>
     </div>
