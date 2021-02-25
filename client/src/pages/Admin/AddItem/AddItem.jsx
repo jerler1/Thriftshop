@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ItemForm from "../../../components/ItemForm/ItemForm";
 import "./AddItem.css";
+import 
 // import { Image } from "cloudinary-react";
 
 const AddItem = (props) => {
@@ -20,6 +21,10 @@ const AddItem = (props) => {
       }
     }
   );
+
+  handleFormSubmit = event => {
+      event.preventDefault();      
+  }
 
   return (
     <div>

@@ -3,15 +3,15 @@ import React from "react";
 const ItemForm = (props) => {
   return (
     <div>
-      <div class="field">
-        <label class="label">Label</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="e.g. Dresser" />
+      <div className="field">
+        <label className="label">Item Name</label>
+        <div className="control">
+          <input className="input" type="text" placeholder="e.g. Dresser" />
         </div>
       </div>
-      <div class="field">
-        <label class="label">Category</label>
-        <div class="control">
+      <div className="field">
+        <label className="label">Category</label>
+        <div className="control">
           <div className="select">
             <select name="category">
               <option value="Select One">Select One</option>
@@ -22,15 +22,15 @@ const ItemForm = (props) => {
           </div>
         </div>
       </div>
-      <div class="field">
-        <label class="label">Price</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="e.g. $10" />
+      <div className="field">
+        <label className="label">Price</label>
+        <div className="control">
+          <input className="input" type="text" placeholder="e.g. $10" />
         </div>
       </div>
-      <div class="field">
-        <label class="label">Condition</label>
-        <div class="control">
+      <div className="field">
+        <label className="label">Condition</label>
+        <div className="control">
           <div className="select">
             <select name="category">
               <option value="Select One">Select One</option>
@@ -41,11 +41,11 @@ const ItemForm = (props) => {
           </div>
         </div>
       </div>
-      <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
+      <div className="field">
+        <label className="label">Description</label>
+        <div className="control">
           <textarea
-            class="textarea is-primary"
+            className="textarea is-primary"
             placeholder="Primary textarea"
           ></textarea>
         </div>
