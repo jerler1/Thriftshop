@@ -1,4 +1,4 @@
-.image {
+.add-image {
     width: 600px;
     padding-bottom: 10px;
     padding-top: 100px;
@@ -20,6 +20,6 @@
     padding-right: 300px;
 }
 
-.columns {
+.add-columns {
     padding-top: 100px;
-}
+} 

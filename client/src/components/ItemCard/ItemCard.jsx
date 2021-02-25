@@ -1,5 +1,4 @@
 import React from "react";
-import AdminFooter from "../AdminFooter/AdminFooter";
 import "./ItemCard.css";
 
 const ItemCard = (props) => {

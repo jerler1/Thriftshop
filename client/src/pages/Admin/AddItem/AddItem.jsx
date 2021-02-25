@@ -46,9 +46,9 @@ const AddItem = () => {
 
   return (
     <div>
-      <div className="columns center">
+      <div className="columns center add-columns">
         <div className="column leftCol">
-          <figure className="image center">
+          <figure className="image center add-image">
             <img src={imageSource} alt="placeholder" />
           </figure>
           <button className="button is-info center" onClick={widget.open}>
