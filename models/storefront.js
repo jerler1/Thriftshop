@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Storefront = require("./storefront");
 
 const Schema = mongoose.Schema;
 
