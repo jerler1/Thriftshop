@@ -49,7 +49,7 @@ const AddItem = () => {
     <div>
       <div className="columns center columnsCustom">
         <div className="column leftCol">
-          <figure className="image center">
+          <figure className="imageCustom center">
             <img src={imageSource} alt="placeholder" />
           </figure>
           <button className="button is-info center" onClick={widget.open}>
