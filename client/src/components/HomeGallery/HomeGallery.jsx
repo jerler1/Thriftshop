@@ -10,14 +10,14 @@ const HomeGallery = () => {
   return (
     
     <div className="container">
-        <h1 class="title">Recently Added Items:</h1>
+        <h1 className="title">Recently Added Items:</h1>
         <div className="columns">
         <ItemCard>{auth.user ? <AdminFooter /> : <ClientFooter />}</ItemCard>
         <ItemCard>{auth.user ? <AdminFooter /> : <ClientFooter />}</ItemCard>
         <ItemCard>{auth.user ? <AdminFooter /> : <ClientFooter />}</ItemCard>
         <ItemCard>{auth.user ? <AdminFooter /> : <ClientFooter />}</ItemCard>
       </div>
-        <h1 class="title">Featured Items:</h1>
+        <h1 className="title">Featured Items:</h1>
         <div className="columns">
         <ItemCard>{auth.user ? <AdminFooter /> : <ClientFooter />}</ItemCard>
         <ItemCard>{auth.user ? <AdminFooter /> : <ClientFooter />}</ItemCard>

@@ -1,5 +1,4 @@
 import React from "react";
-import AdminFooter from "../AdminFooter/AdminFooter";
 import "./ItemCard.css";
 
 const ItemCard = (props) => {
@@ -10,7 +9,7 @@ const ItemCard = (props) => {
           <figure className="image is-4by3">
             <img
               src="https://www.placecage.com/1280/960"
-              alt="Placeholder image"
+              alt="Placeholder"
             />
           </figure>
         </div>
