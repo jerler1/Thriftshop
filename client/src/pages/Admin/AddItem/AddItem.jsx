@@ -22,6 +22,7 @@ const AddItem = () => {
       {
         cloudName: "thriftshopshop",
         uploadPreset: "thriftshopshop",
+        sources: ["local", "url", "camera"],
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
@@ -65,11 +66,7 @@ const AddItem = () => {
           </button>
         </div>
         <div className="column rightCol">
-          <ItemForm
-            {...formValues}
-            handleInputChange={handleInputChange}
-            handleFormSubmit={handleFormSubmit}
-          />
+          <ItemForm {...formValues} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
         </div>
       </div>
     </div>
