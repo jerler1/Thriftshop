@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import { useAuth } from "../../hooks/use-auth";
 import "./Navbar.css";
@@ -11,17 +11,11 @@ const Navbar = () => {
   };
 
   const auth = useAuth();
-  const history = useHistory();
 
   const handleLogout = () => {
-    auth
-      .logout()
-      .then(() => {
-        // history.push("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    auth.logout().catch((err) => {
+      console.log(err);
+    });
   };
 
   return (
