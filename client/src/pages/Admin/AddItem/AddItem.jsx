@@ -35,6 +35,7 @@ const AddItem = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    console.log(event);
     API.addItemSubmit(formValues)
       .then((res) => {
         console.log(res);
@@ -57,6 +58,7 @@ const AddItem = () => {
         </div>
         <div className="column rightCol">
           <ItemForm
+            {...formValues}
             handleInputChange={handleInputChange}
             handleFormSubmit={handleFormSubmit}
           />
