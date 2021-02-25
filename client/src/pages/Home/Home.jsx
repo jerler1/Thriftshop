@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
+import Hero from "../../components/Hero/Hero";
 import "./Home.css";
-import GalleryContainer from "../../components/GalleryContainer/GalleryContainer";
+import HomeGallery from "../../components/HomeGallery/HomeGallery";
 
 const Home = (props) => {
-    return (
-        <div>
-            <h1>Home</h1>
-            <GalleryContainer />
-        </div>
-    );
+  return (
+    <div>
+      <Hero />
+      <HomeGallery />
+    </div>
+  );
 };
 
 export default Home;
