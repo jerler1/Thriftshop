@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
 import api from "../../../api";
 import "./Dashboard.css";
@@ -75,7 +74,7 @@ const Dashboard = (props) => {
 
   const tableHeadings = Object.keys(storeItems[0]).filter((heading) => heading !== "id");
 
-  return auth.user ? (
+  return (
     <div className="container">
       <header className="mb-4">
         <h2 className="title">Welcome back, {auth.user.email}</h2>
@@ -113,8 +112,6 @@ const Dashboard = (props) => {
         </tbody>
       </table>
     </div>
-  ) : (
-    <Redirect to="/admin" />
   );
 };
 
