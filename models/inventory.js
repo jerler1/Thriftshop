@@ -15,9 +15,9 @@ const inventorySchema = new Schema({
     required: true,
   },
   category: {
-      type: String,
-      trim: true,
-      required: true,
+    type: String,
+    trim: true,
+    required: true,
   },
   length: {
     type: String,
@@ -28,17 +28,17 @@ const inventorySchema = new Schema({
     trim: true,
   },
   height: {
-      type: String,
-      trim: true,
+    type: String,
+    trim: true,
   },
   wieght: {
-      type: String,
-      trim: true,
+    type: String,
+    trim: true,
   },
   price: {
-      type: Currency,
-      trim: true,
-      required: true,
+    type: Currency,
+    trim: true,
+    required: true,
   },
   condition: {
     type: String,
@@ -46,14 +46,15 @@ const inventorySchema = new Schema({
     required: true,
   },
   image: {
-      type: Array,
-      required: true,
+    type: Array,
+    required: true,
   },
   status: {
-      type: String,
-      trim: true,
-      required: true,
-  }
+    type: String,
+    trim: true,
+    required: true,
+    default: "Available",
+  },
 });
 
 const Inventory = mongoose.model("Inventory", inventorySchema);
