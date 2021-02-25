@@ -1,52 +1,82 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
+import api from "../../../api";
 import "./Dashboard.css";
+
+const items = [
+  {
+    id: 1,
+    name: "Oak Dresser",
+    description: "fancy dresser",
+    category: "Furniture",
+    price: "150",
+    condition: "Good",
+    image: "",
+    status: "Sold",
+  },
+  {
+    id: 2,
+    name: "Oak Dresser",
+    description: "fancy dresser",
+    category: "Furniture",
+    price: "150",
+    condition: "Good",
+    image: "",
+    status: "Sold",
+  },
+  {
+    id: 3,
+    name: "Oak Dresser",
+    description: "fancy dresser",
+    category: "Furniture",
+    price: "150",
+    condition: "Good",
+    image: "",
+    status: "Sold",
+  },
+];
 
 const Dashboard = (props) => {
   const auth = useAuth();
+  const [storeItems, setStoreItems] = useState(items);
 
-  // TODO: Use the actual items from the store on the user object.
-  const items = [
-    {
-      id: 1,
-      name: "Oak Dresser",
-      description: "fancy dresser",
-      category: "Furniture",
-      price: "150",
-      condition: "Good",
-      image: "",
-      status: "Sold",
-    },
-    {
-      id: 2,
-      name: "Oak Dresser",
-      description: "fancy dresser",
-      category: "Furniture",
-      price: "150",
-      condition: "Good",
-      image: "",
-      status: "Sold",
-    },
-    {
-      id: 3,
-      name: "Oak Dresser",
-      description: "fancy dresser",
-      category: "Furniture",
-      price: "150",
-      condition: "Good",
-      image: "",
-      status: "Sold",
-    },
-  ];
+  useEffect(() => {
+    api
+      .getStorefront(auth.user.storefront)
+      .then((data) => {
+        // Set the items.
+      })
+      .catch((err) => {
+        // Do something with error.
+      });
+  }, [auth]);
 
-  const tableHeadings = Object.keys(items[0]).filter((heading) => heading !== "id");
+  const handleDelete = (id) => {
+    api
+      .deleteItem(id)
+      .then((data) => {
+        api
+          .getStorefront(auth.user.storefront)
+          .then((data) => {
+            // Set the items.
+          })
+          .catch((err) => {
+            // Do something with error.
+          });
+      })
+      .catch((err) => {
+        // Show a notification or something.
+      });
+  };
+
+  const tableHeadings = Object.keys(storeItems[0]).filter((heading) => heading !== "id");
 
   return auth.user ? (
     <div className="container">
       <header className="mb-4">
-        <h2 className="title">Welcome back, {auth.user.username}</h2>
+        <h2 className="title">Welcome back, {auth.user.email}</h2>
       </header>
       <section className="mb-4">
         <h2 className="title">Metrics?</h2>
@@ -72,7 +102,7 @@ const Dashboard = (props) => {
                     <i className="far fa-edit"></i>
                   </span>
                 </Link>
-                <span className="icon has-text-danger is-clickable">
+                <span className="icon has-text-danger is-clickable" onClick={() => handleDelete(item.id)}>
                   <i className="fas fa-trash-alt"></i>
                 </span>
               </td>
