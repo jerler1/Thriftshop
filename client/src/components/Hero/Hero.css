@@ -4,8 +4,12 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    margin-bottom: 100px;
 
+}
+
+.hero-block {
+    background-color: rgba(0,0,0, 0.5);
+    
 }
 
 .hero-title {
