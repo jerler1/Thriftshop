@@ -7,10 +7,7 @@ const ItemCard = (props) => {
       <div className="card">
         <div className="card-image">
           <figure className="image is-4by3">
-            <img
-              src="https://www.placecage.com/1280/960"
-              alt="Place Cage"
-            />
+            <img src="https://www.placecage.com/1280/960" alt="Place Cage" />
           </figure>
         </div>
         <div className="card-content">
@@ -21,9 +18,7 @@ const ItemCard = (props) => {
             </div>
           </div>
 
-          <div className="content">
-            A short amount of details about the item listed here.
-          </div>
+          <div className="content">A short amount of details about the item listed here.</div>
           {props.children}
         </div>
       </div>

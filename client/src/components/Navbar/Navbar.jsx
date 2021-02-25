@@ -17,7 +17,7 @@ const Navbar = () => {
     auth
       .logout()
       .then(() => {
-        history.push("/");
+        // history.push("/");
       })
       .catch((err) => {
         console.log(err);
@@ -25,11 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className="navbar is-warning navbar-height mb-6"
-      role="navigation"
-      aria-label="main navigation"
-    >
+    <nav className="navbar is-warning navbar-height mb-6" role="navigation" aria-label="main navigation">
       <div className="navbar-start">
         <div className="navbar-brand">
           <Link className="navbar-item navbrand" to="/">
@@ -63,7 +59,7 @@ const Navbar = () => {
             <Link className="navbar-item" to="/admin/addItem">
               Add Items
             </Link>
-            <Link className="navbar-item" onClick={handleLogout}>
+            <Link to="/" className="navbar-item" onClick={handleLogout}>
               Logout
             </Link>
           </div>
