@@ -45,8 +45,9 @@ const Dashboard = (props) => {
   useEffect(() => {
     api
       .getStorefront(auth.user.storefront)
-      .then((data) => {
+      .then((store) => {
         // Set the items.
+        console.log(store);
       })
       .catch((err) => {
         // Do something with error.
@@ -59,8 +60,9 @@ const Dashboard = (props) => {
       .then((data) => {
         api
           .getStorefront(auth.user.storefront)
-          .then((data) => {
+          .then((store) => {
             // Set the items.
+            setStoreItems(store.items);
           })
           .catch((err) => {
             // Do something with error.
