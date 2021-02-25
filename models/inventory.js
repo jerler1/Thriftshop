@@ -19,22 +19,6 @@ const inventorySchema = new Schema({
     trim: true,
     required: true,
   },
-  length: {
-    type: String,
-    trim: true,
-  },
-  width: {
-    type: String,
-    trim: true,
-  },
-  height: {
-    type: String,
-    trim: true,
-  },
-  wieght: {
-    type: String,
-    trim: true,
-  },
   price: {
     type: Currency,
     trim: true,
