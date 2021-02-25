@@ -1,5 +1,5 @@
 import React from 'react';
-import heroImg from "../../images/thrift-image1.png";
+import "./Hero.css";
 
 const Hero = () => {
     return (

@@ -1,0 +1,33 @@
+.hero-img {
+    background-image: url("../../images/thrift-image1.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin-bottom: 100px;
+
+}
+
+.hero-title {
+    text-align: center;
+    color: #ffe08a;
+    font-size:100px;
+    text-shadow:
+   -0.5px -0.5px 0 rgb(42, 42, 42),  
+    0.5px -0.5px 0 rgb(42, 42, 42),
+    -0.5px 0.5px 0 rgb(42, 42, 42),
+     0.5px 0.5px 0 rgb(42, 42, 42);
+    margin-left: -350px;
+}
+
+.hero-subtitle {
+    text-align: center;
+    color: rgb(170, 218, 219);
+    font-size : 60px;
+    margin-left: -280px;
+    text-shadow:
+   -0.5px -0.5px 0 #000,  
+    0.5px -0.5px 0 #000,
+    -0.5px 0.5px 0 #000,
+     0.5px 0.5px 0 #000;
+}
