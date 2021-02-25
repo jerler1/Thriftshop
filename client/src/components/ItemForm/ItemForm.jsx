@@ -25,7 +25,7 @@ const ItemForm = (props) => {
       <div className="field">
         <label className="label">Price</label>
         <div className="control">
-          <input className="input" type="text" placeholder="e.g. $10" />
+          <input className="input" type="text" placeholder="e.g. 10.50" />
         </div>
       </div>
       <div className="field">

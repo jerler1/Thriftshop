@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import ItemForm from "../../../components/ItemForm/ItemForm";
 import "./AddItem.css";
-import 
-// import { Image } from "cloudinary-react";
+import API from "../../../api/index";
 
-const AddItem = (props) => {
+
+const AddItem = () => {
   const [imageSource, setImageSource] = useState(
     "http://res.cloudinary.com/thriftshopshop/image/upload/v1614196967/thriftshopshop/hzkbtocbzgzenprljfao.jpg"
   );
+  const [formValues, setFormValues] = useState({
+      name: "",
+      category: "",
+      price: "",
+      condition: "",
+      description: ""
+  })
 
   const widget = window.cloudinary.createUploadWidget(
     {
@@ -22,6 +29,11 @@ const AddItem = (props) => {
     }
   );
 
+handleInputChange= event => {
+    const { name, value } = event.target
+    setFormValues({...formValues, [name]: value})
+}
+
   handleFormSubmit = event => {
       event.preventDefault();      
   }
@@ -32,7 +44,7 @@ const AddItem = (props) => {
         <h1>This is the add item.</h1>
       </section>
       <div className="columns center">
-        <div className="column has-background-warning-dark leftCol">
+        <div className="column leftCol">
           <figure className="image center">
             <img src={imageSource} alt="placeholder" />
           </figure>
@@ -40,7 +52,7 @@ const AddItem = (props) => {
             Upload Image
           </button>
         </div>
-        <div className="column has-background-danger-dark">
+        <div className="column">
           <ItemForm />
         </div>
       </div>
