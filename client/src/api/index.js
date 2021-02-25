@@ -11,6 +11,11 @@ const api = {
     return axios.get("/api/logout")
       .then(({ data }) => data)
       .catch((err) => console.log("API ERROR: ", err));
+  },
+  addItemSubmit() {
+    return axios.post("/api/inventory").then(({data})=> {
+      console.log(data);
+    })
   }
 };
 
