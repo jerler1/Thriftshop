@@ -35,14 +35,14 @@ const employeeSeeds = [
     {
         firstname: "Nathan",
         lastname: "Castaldi",
-        username: "ncastaldi",
+        username: "nathan@ourstore.com",
         storefront: "6036c82a548b87065cce3af0",
         isAdmin: true,
     },
     {
         firstname: "Seraphina",
         lastname: "Castaldi",
-        username: "scastaldi",
+        username: "seraphina@ourstore.com",
         storefront: "6036c82a548b87065cce3af0",
         isAdmin: false,
     },

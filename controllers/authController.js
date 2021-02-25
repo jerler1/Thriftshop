@@ -1,21 +1,15 @@
-const login = (req, res) => {
-  const { email, password } = req.body;
-  // do stuff with db;
-  console.log(`Received email: '${email}' and password: '${password}'.`);
-  const user = {
-    username: "Test User",
-  };
-  res.json({
-    user,
-  });
-};
-
-const logout = (req, res) => {
-  // destroy the session 
-  res.status(200).send();
-}
+const db = require("../models");
 
 module.exports = {
-  login,
-  logout,
-};
+  login: function (req, res) {
+    const { email, password } = req.body;
+    db.Employee.findOne({ username: email })
+      .then((user) => res.json({user}))
+      .catch((err) => res.status(401).json(err))
+  },
+  logout: function (req, res) {
+    // destroy the session 
+    res.status(200).send();
+  }
+
+}
