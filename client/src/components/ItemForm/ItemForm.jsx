@@ -50,6 +50,11 @@ const ItemForm = (props) => {
           ></textarea>
         </div>
       </div>
+      <div className="field">
+        <div className="control">
+          <button className="button is-link">Submit</button>
+        </div>
+      </div>
     </div>
   );
 };
