@@ -69,17 +69,8 @@ const AddItem = () => {
             Upload Image
           </button>
         </div>
-<<<<<<< HEAD
-        <div className="column">
-          <ItemForm
-            {...formValues}
-            handleInputChange={handleInputChange}
-            handleFormSubmit={handleFormSubmit}
-          />
-=======
         <div className="column rightCol">
           <ItemForm {...formValues} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
->>>>>>> 11c351d5b7d60ce8effc9d84cd019af5ad5f53eb
         </div>
       </div>
     </div>
