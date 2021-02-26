@@ -8,7 +8,7 @@ const ItemCard = (props) => {
         <div className="card-image">
           <figure className="image is-4by3">
             <img
-              src="https://www.placecage.com/1280/960"
+              src={props.item.image}
               alt={props.item.description}
             />
           </figure>
