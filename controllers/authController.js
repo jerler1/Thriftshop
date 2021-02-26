@@ -2,7 +2,7 @@ const db = require("../models");
 const bcrypt = require("bcrypt");
 
 module.exports = {
-  createEmployee: function(req, res) {
+  createEmployee: function (req, res) {
     const employeeToCreate = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
@@ -18,13 +18,26 @@ module.exports = {
         //FIXME: Don't send back the user
         res.json(newEmployee);
       })
+    }).catch(err => {
+      console.log(err);
+      res.status(500).end();
     });
   },
   login: function (req, res) {
     const { email, password } = req.body;
-    db.Employee.findOne({ email: email })
-      .then((user) => res.json({user}))
-      .catch((err) => res.status(401).json(err))
+    db.Employee.findOne({ email: email }).then(foundUser => {
+      bcrypt.compare(password, foundUser.password, (err, result) => {
+        if (result) {
+          //FIXME: Don't send back the user.
+          res.json(foundUser);
+        } else {
+          res.status(401).end();
+        }
+      })
+    }).catch(err => {
+      console.log(err);
+      res.status(500).end();
+    }) 
   },
   logout: function (req, res) {
     // destroy the session 
