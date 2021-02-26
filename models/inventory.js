@@ -45,6 +45,10 @@ const inventorySchema = new Schema({
     ref: Storefront,
     required: true,
   },
+  addedAt: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 const Inventory = mongoose.model("Inventory", inventorySchema);
