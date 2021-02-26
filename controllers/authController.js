@@ -3,7 +3,7 @@ const db = require("../models");
 module.exports = {
   login: function (req, res) {
     const { email, password } = req.body;
-    db.Employee.findOne({ username: email })
+    db.Employee.findOne({ email: email })
       .then((user) => res.json({user}))
       .catch((err) => res.status(401).json(err))
   },

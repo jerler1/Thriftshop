@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Currency = require("mongoose-currency");
+const Storefront = require("./storefront");
 
 const Schema = mongoose.Schema;
 
@@ -38,6 +39,11 @@ const inventorySchema = new Schema({
     trim: true,
     required: true,
     default: "Available",
+  },
+  storefront: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Storefront,
+    required: true,
   },
 });
 

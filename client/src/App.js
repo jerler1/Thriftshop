@@ -10,6 +10,7 @@ import Listing from "./pages/Listings/Listing";
 import Navbar from "./components/Navbar/Navbar";
 import { ProvideAuth } from "./hooks/use-auth";
 import "./App.css";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -23,7 +24,10 @@ function App() {
               <Route exact path="/listing" component={Listing} />
               <Route exact path="/listing/:id" component={Detail} />
               <Route exact path="/admin" component={Login} />
-              <Route exact path="/admin/dashboard" component={Dashboard} />
+              {/* <Route exact path="/admin/dashboard" component={Dashboard} /> */}
+              <PrivateRoute exact path="/admin/dashboard">
+                <Dashboard />
+              </PrivateRoute>
               <Route exact path="/admin/addItem" component={AddItem} />
               <Route exact path="/admin/editItem/:id" component={EditItem} />
             </Switch>

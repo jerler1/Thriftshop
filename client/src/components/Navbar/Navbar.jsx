@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import { useAuth } from "../../hooks/use-auth";
 import "./Navbar.css";
@@ -11,31 +11,21 @@ const Navbar = () => {
   };
 
   const auth = useAuth();
-  const history = useHistory();
 
   const handleLogout = () => {
-    auth
-      .logout()
-      .then(() => {
-        history.push("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    auth.logout().catch((err) => {
+      console.log(err);
+    });
   };
-  
+
   return (
-    <nav
-      className="navbar is-warning navbar-height"
-      role="navigation"
-      aria-label="main navigation"
-    >
+    <nav className="navbar is-warning navbar-height mb-6" role="navigation" aria-label="main navigation">
       <div className="navbar-start">
         <div className="navbar-brand">
           <Link className="navbar-item navbrand" to="/">
             Thrift Shop²
           </Link>
-          <p className="navbar-item tag-line">The Thrift Shop's Shop</p>
+          <p className="navbar-item tag-line is-hidden-mobile">The Thrift Shop's Shop</p>
           <div className="navbar-burger burger-box" onClick={setActive}>
             <span></span>
             <span></span>
@@ -46,15 +36,28 @@ const Navbar = () => {
 
       <SearchBar />
       <div className={isActive ? "navbar-menu is-active" : "navbar-menu"}>
-        {!auth.user ? <div className="navbar-end"><Link to="/admin" className="navbar-item">
+        {!auth.user ? (
+          <div className="navbar-end">
+            <Link to="/listing" className="navbar-item">
+              View All Items
+            </Link>
+            <Link to="/admin" className="navbar-item">
               Admin Login
-            </Link></div> : <div className="navbar-end"><Link to="/admin/dashboard" className="navbar-item">
+            </Link>
+          </div>
+        ) : (
+          <div className="navbar-end">
+            <Link to="/admin/dashboard" className="navbar-item">
               Dashboard
-            </Link><Link className="navbar-item" to="/admin/addItem">
+            </Link>
+            <Link className="navbar-item" to="/admin/addItem">
               Add Items
-            </Link><Link className="navbar-item" onClick={handleLogout}>
+            </Link>
+            <Link to="/" className="navbar-item" onClick={handleLogout}>
               Logout
-            </Link></div>}
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );
