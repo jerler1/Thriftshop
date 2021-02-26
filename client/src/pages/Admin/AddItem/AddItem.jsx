@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import ItemForm from "../../../components/ItemForm/ItemForm";
+import { useAuth } from "../../../hooks/use-auth";
 import "./AddItem.css";
 import API from "../../../api/index";
 
 const AddItem = () => {
+  // Getting the user that is logged in.
+  const auth = useAuth();
+
   // This state holds an URL which populates the image.
   const [imageSource, setImageSource] = useState(
-    "http://res.cloudinary.com/thriftshopshop/image/https://res.cloudinary.com/thriftshopshop/image/upload/v1614298348/thriftshopshop/ccsccl977ftngs5u7caw.jpg/v1614196967/thriftshopshop/hzkbtocbzgzenprljfao.jpg"
+    "http://res.cloudinary.com/thriftshopshop/image/upload/v1614352552/thriftshopshop/roavdt7qffqhe7rll2rw.jpg"
   );
 
   // This state holds the data that is coming from the form.
@@ -50,7 +54,7 @@ const AddItem = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(event);
-    API.addItemSubmit({ ...formValues, image: [imageSource] })
+    API.addItemSubmit({ ...formValues, image: [imageSource], storefront: auth.user.storefront })
       .then((res) => {
         console.log(res);
       })

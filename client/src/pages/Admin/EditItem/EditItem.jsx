@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../../hooks/use-auth";
 import ItemForm from "../../../components/ItemForm/ItemForm";
 import "./EditItem.css";
 import API from "../../../api/index";
@@ -7,10 +8,12 @@ import API from "../../../api/index";
 const EditItem = () => {
   // Making the id from the URL available.
   const { id } = useParams();
+  const auth = useAuth();
 
   // Making the states empty slate for when the edittable item data comes in.
-  const [imageSource, setImageSource] = useState("");
   const [formValues, setFormValues] = useState({
+    imageSource: "",
+    storefront: "",
     name: "",
     category: "",
     price: "",
@@ -30,15 +33,22 @@ const EditItem = () => {
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log("Done! Here is the image info: ", result.info);
-          setImageSource(result.info.url);
+          setFormValues({ ...formValues, imageSource: result.info.url });
         }
       }
     );
     API.getItem(id)
       .then((retrievedItem) => {
         console.log(retrievedItem);
-        setFormValues(retrievedItem);
-        // setImageSource
+        setFormValues({
+          ...formValues,
+          imageSource: retrievedItem.image[0],
+          name: retrievedItem.name,
+          category: retrievedItem.category,
+          price: retrievedItem.price,
+          condition: retrievedItem.condition,
+          description: retrievedItem.description,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -57,7 +67,7 @@ const EditItem = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(event);
-    API.addItemSubmit(formValues)
+    API.editItem(id, {...formValues, storefront: auth.user.storefront})
       .then((res) => {
         console.log(res);
       })
@@ -71,7 +81,7 @@ const EditItem = () => {
       <div className="columns center columnsCustom">
         <div className="column leftCol">
           <figure className="imageCustom center">
-            <img src={imageSource} alt="placeholder" />
+            <img src={formValues.imageSource} alt="placeholder" />
           </figure>
           <button className="button is-info center" onClick={handleClick}>
             Upload Image
