@@ -7,8 +7,7 @@ const api = {
   logout() {
     return axios.get("/api/logout").then(({ data }) => data);
   },
-  getInventory(options = {}) {
-    const { latest = false, limit = 0 } = options;
+  getInventory({ latest = false, limit = 0} = {}) {
     if (latest) {
       return axios.get(`/api/inventory/latest?limit=${limit ? limit : ""}`);
     }
