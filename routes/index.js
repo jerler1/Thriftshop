@@ -7,7 +7,7 @@ const employeeRoutes = require("./employee");
 const storefrontRoutes = require("./storefront");
 const invoiceRoutes = require("./invoice");
 
-router.use(authRoutes);
+router.use("/auth/", authRoutes);
 router.use("/inventory", inventoryRoutes);
 router.use("/employee", employeeRoutes);
 router.use("/storefront", storefrontRoutes);
