@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/jerler1/Thiftshop#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.11.17",
