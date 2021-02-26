@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
 import api from "../../../api";
 import Chart from "../../../components/DashboardChart/DashboardChart";
