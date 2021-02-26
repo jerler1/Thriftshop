@@ -30,7 +30,7 @@ const DashboardChart = ({ storeItems, handleDelete }) => {
                 if (heading === "image") {
                   return (
                     <td>
-                      <img key={i} src={item.image[0]} width="100" />
+                      <img key={i} src={item.image[0]} alt="product" width="100" />
                     </td>
                   );
                 } else {
