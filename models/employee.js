@@ -25,9 +25,9 @@ const employeeSchema = new Schema({
     required: true,
   },
   storefront: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: Storefront,
-      required: true,
+    type: Schema.Types.ObjectId,
+    ref: Storefront,
+    required: true,
   },
   isAdmin: {
     type: Boolean,
