@@ -4,38 +4,38 @@ import { useAuth } from "../../../hooks/use-auth";
 import api from "../../../api";
 import "./Dashboard.css";
 
-const items = [
-  {
-    id: 1,
-    name: "Oak Dresser",
-    description: "fancy dresser",
-    category: "Furniture",
-    price: "150",
-    condition: "Good",
-    image: "",
-    status: "Sold",
-  },
-  {
-    id: 2,
-    name: "Oak Dresser",
-    description: "fancy dresser",
-    category: "Furniture",
-    price: "150",
-    condition: "Good",
-    image: "",
-    status: "Sold",
-  },
-  {
-    id: 3,
-    name: "Oak Dresser",
-    description: "fancy dresser",
-    category: "Furniture",
-    price: "150",
-    condition: "Good",
-    image: "",
-    status: "Sold",
-  },
-];
+// const items = [
+//   {
+//     id: 1,
+//     name: "Oak Dresser",
+//     description: "fancy dresser",
+//     category: "Furniture",
+//     price: "150",
+//     condition: "Good",
+//     image: "",
+//     status: "Sold",
+//   },
+//   {
+//     id: 2,
+//     name: "Oak Dresser",
+//     description: "fancy dresser",
+//     category: "Furniture",
+//     price: "150",
+//     condition: "Good",
+//     image: "",
+//     status: "Sold",
+//   },
+//   {
+//     id: 3,
+//     name: "Oak Dresser",
+//     description: "fancy dresser",
+//     category: "Furniture",
+//     price: "150",
+//     condition: "Good",
+//     image: "",
+//     status: "Sold",
+//   },
+// ];
 
 const Dashboard = (props) => {
   const auth = useAuth();
@@ -45,7 +45,7 @@ const Dashboard = (props) => {
     api
       .getStorefront(auth.user.storefront)
       .then((store) => {
-        // Set the items.
+        setStoreItems(store.items);
         console.log(store);
       })
       .catch((err) => {
