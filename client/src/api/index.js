@@ -2,15 +2,16 @@ import axios from "axios";
 
 const api = {
   login(email, password) {
-    return axios
-      .post("/api/login", { email, password })
-      .then(({ data }) => data);
+    return axios.post("/api/login", { email, password }).then(({ data }) => data);
   },
   logout() {
     return axios.get("/api/logout").then(({ data }) => data);
   },
-  getInventory() {
-    return axios.get("/api/inventory");
+  getInventory({ latest = false, limit = 0} = {}) {
+    if (latest) {
+      return axios.get(`/api/inventory/latest?limit=${limit ? limit : ""}`);
+    }
+    return axios.get(`/api/inventory?limit=${limit ? limit : ""}`);
   },
   addItemSubmit(formObject) {
     return axios.post("/api/inventory", formObject).then(({ data }) => data);

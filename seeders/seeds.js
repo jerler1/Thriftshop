@@ -25,6 +25,7 @@ const employeeSeeds = [
     firstname: "Nathan",
     lastname: "Castaldi",
     email: "nathan@ourstore.com",
+    password: "test",
     storefront: storeId,
     isAdmin: true,
   },
@@ -33,6 +34,7 @@ const employeeSeeds = [
     firstname: "Seraphina",
     lastname: "Castaldi",
     email: "seraphina@ourstore.com",
+    password: "test",
     storefront: storeId,
     isAdmin: false,
   },
@@ -41,6 +43,7 @@ const employeeSeeds = [
     firstname: "Bradley",
     lastname: "Donahue",
     email: "b@e",
+    password: "test",
     storefront: storeId,
     isAdmin: true,
   },
@@ -148,17 +151,16 @@ const storefrontSeeds = [
 ];
 
 Employee.deleteMany({})
-  .then(() => Employee.collection.insertMany(employeeSeeds))
+  .then(() => Employee.insertMany(employeeSeeds))
   .then((employeeData) => {
     Storefront.deleteMany({}).then(() => {
-      Storefront.collection
-        .insertMany(storefrontSeeds)
+      Storefront.insertMany(storefrontSeeds)
         .then((storeData) => {
           Invoice.deleteMany({})
-            .then(() => Invoice.collection.insertMany(invoiceSeeds))
+            .then(() => Invoice.insertMany(invoiceSeeds))
             .then((invoiceData) => {
               Inventory.deleteMany({})
-                .then(() => Inventory.collection.insertMany(inventorySeeds))
+                .then(() => Inventory.insertMany(inventorySeeds))
                 .then((inventoryData) => {
                   // console.log(data.result.n + " records inserted!");
                   process.exit();

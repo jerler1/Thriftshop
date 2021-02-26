@@ -7,6 +7,9 @@ router
     .get(inventoryController.findAll)
     .post(inventoryController.create);
 
+// /api/inventory/latest
+router.get('/latest', inventoryController.findLatest);
+
 // Matches with "/api/inventory/:id"
 router
     .route("/:id")
