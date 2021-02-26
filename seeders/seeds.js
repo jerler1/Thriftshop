@@ -66,6 +66,42 @@ const inventorySeeds = [
         condition: "Excellent",
         image: "source_url",
         status: "Available"
+      },
+      {
+        name: "The Coolest Red Shirt",
+        description: "A red shirt with only some holes",
+        category: "Clothing",
+        price: "10",
+        condition: "Near Mint",
+        image: "source_url",
+        status: "Available"
+      },
+      {
+        name: "Titanic VHS",
+        description: "2-tape vhs of the smash hit Titanic",
+        category: "Entertainment",
+        price: "5",
+        condition: "Poor",
+        image: "source_url",
+        status: "Available"
+      },
+      {
+        name: "Kitchen-aid Mixer",
+        description: "Cool blue Kitchen-aid mixer with a slightly cracked bowl",
+        category: "Kitchen",
+        price: "50",
+        condition: "Good",
+        image: "source_url",
+        status: "Available"
+      },
+      {
+        name: "Desktop Speakers",
+        description: "Pair of black Logitech speakers",
+        category: "Electronics",
+        price: "8",
+        condition: "Excellent",
+        image: "source_url",
+        status: "Available"
       }
 ]
 
