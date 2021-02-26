@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import ItemForm from "../../../components/ItemForm/ItemForm";
 import "./EditItem.css";
 import API from "../../../api/index";
 
 const EditItem = () => {
-  const [imageSource, setImageSource] = useState(
-    "http://res.cloudinary.com/thriftshopshop/image/upload/v1614196967/thriftshopshop/hzkbtocbzgzenprljfao.jpg"
-  );
+  const { id } = useParams();
+  const [imageSource, setImageSource] = useState("");
   const [formValues, setFormValues] = useState({
     name: "",
     category: "",
@@ -14,6 +14,10 @@ const EditItem = () => {
     condition: "",
     description: "",
   });
+
+//   useEffect(() => {
+//     API.get;
+//   }, []);
 
   const widget = window.cloudinary.createUploadWidget(
     {

@@ -4,9 +4,13 @@ import "./AddItem.css";
 import API from "../../../api/index";
 
 const AddItem = () => {
+
+  // This state holds an URL which populates the image.
   const [imageSource, setImageSource] = useState(
     "http://res.cloudinary.com/thriftshopshop/image/upload/v1614196967/thriftshopshop/hzkbtocbzgzenprljfao.jpg"
   );
+
+  // This state holds the data that is coming from the form.
   const [formValues, setFormValues] = useState({
     name: "",
     category: "",
@@ -15,6 +19,7 @@ const AddItem = () => {
     description: "",
   });
 
+  // Opens the up the cloudinary widget with some configuration options.
   const widget = window.cloudinary.createUploadWidget(
     {
       cloudName: "thriftshopshop",
@@ -36,7 +41,7 @@ const AddItem = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(event);
-    API.addItemSubmit(formValues)
+    API.addItemSubmit({...formValues, image: [imageSource]})
       .then((res) => {
         console.log(res);
       })
@@ -46,17 +51,17 @@ const AddItem = () => {
   };
 
   return (
-    <div>
-      <div className="columns center columnsCustom">
+    <div className="container">
+      <div className="columns center">
         <div className="column leftCol">
-          <figure className="imageCustom center">
+          <figure className="center mt-6 mr-4">
             <img src={imageSource} alt="placeholder" />
           </figure>
           <button className="button is-info center" onClick={widget.open}>
             Upload Image
           </button>
         </div>
-        <div className="column rightCol">
+        <div className="column">
           <ItemForm
             {...formValues}
             handleInputChange={handleInputChange}

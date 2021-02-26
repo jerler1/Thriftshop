@@ -11,14 +11,14 @@
 
 .leftCol {
     padding-right: 0 !important;
-    margin-left: 150px;
+    /* margin-left: 150px; */
 }
 
-.rightCol {
+/* .rightCol {
     width: 70% !important;
     margin-right: 50px;
     padding-right: 300px;
-}
+} */
 
 .columnsCustom {
     padding-top: 100px;
