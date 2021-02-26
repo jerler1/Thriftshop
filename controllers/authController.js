@@ -15,30 +15,34 @@ module.exports = {
       if (err) throw new Error(err);
       console.log(hashedPassword);
       employeeToCreate.password = hashedPassword;
-      db.Employee.create(employeeToCreate).then((newEmployee) => {
-        //FIXME: Don't send back the user
-        res.json(newEmployee);
-      })
-    }).catch(err => {
-      console.log(err);
-      res.status(500).end();
+      db.Employee.create(employeeToCreate)
+        .then((newEmployee) => {
+          //FIXME: Don't send back the user
+          res.json(newEmployee);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).end();
+        })
     });
   },
   login: function (req, res) {
     const { email, password } = req.body;
-    db.Employee.findOne({ email: email }).then(foundUser => {
-      bcrypt.compare(password, foundUser.password, (err, result) => {
-        if (result) {
-          //FIXME: Don't send back the user.
-          res.json(foundUser);
-        } else {
-          res.status(401).end();
-        }
+    db.Employee.findOne({ email: email })
+      .then(foundUser => {
+        bcrypt.compare(password, foundUser.password, (err, result) => {
+          if (result) {
+            //FIXME: Don't send back the user.
+            res.json(foundUser);
+          } else {
+            res.status(401).end();
+          }
+        })
       })
-    }).catch(err => {
-      console.log(err);
-      res.status(500).end();
-    }) 
+      .catch(err => {
+        console.log(err);
+        res.status(500).end();
+      })
   },
   logout: function (req, res) {
     // destroy the session 
