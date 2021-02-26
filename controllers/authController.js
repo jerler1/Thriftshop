@@ -32,8 +32,8 @@ module.exports = {
       .then(foundUser => {
         bcrypt.compare(password, foundUser.password, (err, result) => {
           if (result) {
-            //FIXME: Don't send back the user.
-            res.json(foundUser);
+            const token = jwt.sign({ _id: foundUser._id }, "supersecretpassword");
+            res.json({ token });
           } else {
             res.status(401).end();
           }
