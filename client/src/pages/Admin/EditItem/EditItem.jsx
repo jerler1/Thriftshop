@@ -43,7 +43,7 @@ const EditItem = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   function handleClick() {
     widgetRef.current.open();

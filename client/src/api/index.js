@@ -9,6 +9,9 @@ const api = {
   logout() {
     return axios.get("/api/logout").then(({ data }) => data);
   },
+  getInventory() {
+    return axios.get("/api/inventory");
+  },
   addItemSubmit(formObject) {
     return axios.post("/api/inventory", formObject).then(({ data }) => data);
   },
