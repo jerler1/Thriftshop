@@ -9,9 +9,9 @@ const storefrontSchema = new Schema({
     required: true,
   },
   owner: {
-      type: String,
-      trim: true,
-      required: true,
+    type: String,
+    trim: true,
+    required: true,
   },
   address1: {
     type: String,
@@ -23,24 +23,42 @@ const storefrontSchema = new Schema({
     trim: true,
   },
   city: {
-      type: String,
-      trim: true,
-      required: true,
+    type: String,
+    trim: true,
+    required: true,
   },
   state: {
-      type: String,
-      trim: true,
-      required: true,
+    type: String,
+    trim: true,
+    required: true,
   },
   zip: {
-      type: String,
-      trim: true,
-      required: true,
+    type: String,
+    trim: true,
+    required: true,
   },
   phone: {
     type: String,
     trim: true,
   },
+  employees: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Employee",
+    },
+  ],
+  items: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Inventory"
+    }
+  ],
+  invoices: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Invoice"
+    }
+  ]
 });
 
 const Storefront = mongoose.model("Storefront", storefrontSchema);

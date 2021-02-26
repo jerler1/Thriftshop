@@ -41,7 +41,7 @@ const inventorySchema = new Schema({
     default: "Available",
   },
   storefront: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: Storefront,
     required: true,
   },
