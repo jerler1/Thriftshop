@@ -33,27 +33,31 @@ const EditItem = () => {
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log("Done! Here is the image info: ", result.info);
-          setFormValues({ ...formValues, imageSource: result.info.url });
+          setFormValues((currentValues) => {
+            return { ...currentValues, imageSource: result.info.url };
+          });
         }
       }
     );
     API.getItem(id)
       .then((retrievedItem) => {
         console.log(retrievedItem);
-        setFormValues({
-          ...formValues,
-          imageSource: retrievedItem.image[0],
-          name: retrievedItem.name,
-          category: retrievedItem.category,
-          price: retrievedItem.price,
-          condition: retrievedItem.condition,
-          description: retrievedItem.description,
+        setFormValues((currentValues) => {
+          return {
+            ...currentValues,
+            imageSource: retrievedItem.image[0],
+            name: retrievedItem.name,
+            category: retrievedItem.category,
+            price: retrievedItem.price,
+            condition: retrievedItem.condition,
+            description: retrievedItem.description,
+          };
         });
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [id, formValues]);
+  }, [id]);
 
   function handleClick() {
     widgetRef.current.open();
@@ -67,7 +71,7 @@ const EditItem = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(event);
-    API.editItem(id, {...formValues, storefront: auth.user.storefront})
+    API.editItem(id, { ...formValues, storefront: auth.user.storefront })
       .then((res) => {
         console.log(res);
       })
