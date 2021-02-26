@@ -6,6 +6,6 @@ router.post("/login", authController.login);
 router.get("/logout", authController.logout);
 
 // Route to create new employees
-router.get("/createEmployee", authController.createEmployee);
+router.post("/signup", authController.createEmployee);
 
 module.exports = router;
