@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import ItemForm from "../../../components/ItemForm/ItemForm";
 import "./EditItem.css";
@@ -38,7 +38,7 @@ const EditItem = () => {
       .then((retrievedItem) => {
         console.log(retrievedItem);
         setFormValues(retrievedItem);
-        setImageSource 
+        // setImageSource
       })
       .catch((err) => {
         console.log(err);
