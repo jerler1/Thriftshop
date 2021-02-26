@@ -37,6 +37,8 @@ const EditItem = () => {
     API.getItem(id)
       .then((retrievedItem) => {
         console.log(retrievedItem);
+        setFormValues(retrievedItem);
+        setImageSource 
       })
       .catch((err) => {
         console.log(err);
