@@ -7,7 +7,7 @@ import api from "../../api/index";
 import "../ItemCard/ItemCard.css";
 
 const GalleryContainer = () => {
-  const [items, setItems] = useState([]);
+  const [invItems, setInvItems] = useState([]);
   const auth = useAuth();
 
   useEffect(() => {
@@ -18,15 +18,15 @@ const GalleryContainer = () => {
   function loadInventory() {
     api
       .getInventory()
-      .then((res) => setItems(res.data))
+      .then((res) => setInvItems(res.data))
       .catch((err) => console.log(err));
   }
 
   return (
     <div className="container">
       <div className="columns is-multiline">
-        {items.map(item => {
-          return (<ItemCard key={item._id} item={item}>{auth.user ? <AdminFooter item={item}/> : <ClientFooter item={item}/>}</ItemCard>);
+        {invItems.map(invItem => {
+          return (<ItemCard key={invItem._id} item={invItem}>{auth.user ? <AdminFooter item={invItem}/> : <ClientFooter item={invItem}/>}</ItemCard>);
         })}
       </div>
     </div>
