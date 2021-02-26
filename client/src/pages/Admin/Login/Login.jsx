@@ -39,49 +39,51 @@ const Login = (props) => {
   };
 
   return (
-    <div className="box">
-      <h2 className="title">Log in to your account</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="field">
-          <label className="label" htmlFor="email">
-            Email
-          </label>
-          <div className="control">
-            <input
-              className="input"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="admin@example.com"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
+    <div className="is-flex is-justify-content-center">
+      <div className="box">
+        <h2 className="title">Log in to your account</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="field">
+            <label className="label" htmlFor="email">
+              Email
+            </label>
+            <div className="control">
+              <input
+                className="input"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="admin@example.com"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <label className="label" htmlFor="password">
-            Password
-          </label>
-          <div className="control">
-            <input
-              className="input"
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleInputChange}
-              required
-            />
+          <div className="field">
+            <label className="label" htmlFor="password">
+              Password
+            </label>
+            <div className="control">
+              <input
+                className="input"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <button className={"button is-primary" + (isLoading ? " is-loading" : "")} type="submit">
-            Log In
-          </button>
-        </div>
-      </form>
+          <div className="field">
+            <button className={"button is-primary" + (isLoading ? " is-loading" : "")} type="submit">
+              Log In
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
