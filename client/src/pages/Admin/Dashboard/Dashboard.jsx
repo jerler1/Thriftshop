@@ -4,42 +4,18 @@ import { useAuth } from "../../../hooks/use-auth";
 import api from "../../../api";
 import "./Dashboard.css";
 
-// const items = [
-//   {
-//     id: 1,
-//     name: "Oak Dresser",
-//     description: "fancy dresser",
-//     category: "Furniture",
-//     price: "150",
-//     condition: "Good",
-//     image: "",
-//     status: "Sold",
-//   },
-//   {
-//     id: 2,
-//     name: "Oak Dresser",
-//     description: "fancy dresser",
-//     category: "Furniture",
-//     price: "150",
-//     condition: "Good",
-//     image: "",
-//     status: "Sold",
-//   },
-//   {
-//     id: 3,
-//     name: "Oak Dresser",
-//     description: "fancy dresser",
-//     category: "Furniture",
-//     price: "150",
-//     condition: "Good",
-//     image: "",
-//     status: "Sold",
-//   },
-// ];
-
 const Dashboard = (props) => {
   const auth = useAuth();
-  const [storeItems, setStoreItems] = useState([]);
+  const [storeItems, setStoreItems] = useState([{
+    name: "",
+    description: "",
+    category: "",
+    price: "",
+    condition: "",
+    image: [],
+    status: "",
+    storefront: "",
+  }]);
 
   useEffect(() => {
     api
@@ -47,6 +23,7 @@ const Dashboard = (props) => {
       .then((store) => {
         console.log(store);
         setStoreItems(store.items);
+        console.log(store.items);
       })
       .catch((err) => {
         // Do something with error.
@@ -72,7 +49,9 @@ const Dashboard = (props) => {
       });
   };
 
-  // const tableHeadings = Object.keys(storeItems[0]).filter((heading) => heading !== "id");
+  const tableHeadings = Object.keys(storeItems[0]).filter(
+    (heading) => heading !== "id"
+  );
 
   return (
     <div className="container">
@@ -85,25 +64,36 @@ const Dashboard = (props) => {
       <table className="table is-striped is-hoverable is-fullwidth">
         <thead>
           <tr>
-            {/* {tableHeadings.map((heading, i) => (
+            {tableHeadings.map((heading, i) => (
               <th key={i}>{heading}</th>
-            ))} */}
+            ))}
             <th></th>
           </tr>
         </thead>
         <tbody>
           {storeItems.map((item) => (
             <tr key={item.id}>
-              {/* {tableHeadings.map((heading, i) => (
-                <td key={i}>{item[heading]}</td>
-              ))} */}
+              {tableHeadings.map((heading, i) => {
+                if (heading === "image") {
+                  return (
+                    <td>
+                      <img key={i} src={item.image[0]} />
+                    </td>
+                  );
+                } else {
+                  return <td key={i}>{item[heading]}</td>;
+                }
+              })}
               <td className="is-flex is-justify-content-space-around">
-                <Link to={`/admin/editItem/${item.id}`}>
+                <Link to={`/admin/editItem/${item._id}`}>
                   <span className="icon">
                     <i className="far fa-edit"></i>
                   </span>
                 </Link>
-                <span className="icon has-text-danger is-clickable" onClick={() => handleDelete(item.id)}>
+                <span
+                  className="icon has-text-danger is-clickable"
+                  onClick={() => handleDelete(item._id)}
+                >
                   <i className="fas fa-trash-alt"></i>
                 </span>
               </td>
