@@ -17,8 +17,8 @@ module.exports = {
       employeeToCreate.password = hashedPassword;
       db.Employee.create(employeeToCreate)
         .then((newEmployee) => {
-          //FIXME: Don't send back the user
-          res.json(newEmployee);
+          const token = jwt.sign({ _id: newEmployee._id }, "supersecretpassword");
+          res.json({ token });
         })
         .catch((err) => {
           console.log(err);
