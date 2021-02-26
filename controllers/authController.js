@@ -1,5 +1,6 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   createEmployee: function (req, res) {
