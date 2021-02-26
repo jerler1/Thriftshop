@@ -26,7 +26,7 @@ const GalleryContainer = () => {
     <div className="container">
       <div className="columns is-multiline">
         {items.map(item => {
-          return (<ItemCard key={item._id} item={item}>{auth.user ? <AdminFooter /> : <ClientFooter />}</ItemCard>);
+          return (<ItemCard key={item._id} item={item}>{auth.user ? <AdminFooter item={item}/> : <ClientFooter item={item}/>}</ItemCard>);
         })}
       </div>
     </div>
