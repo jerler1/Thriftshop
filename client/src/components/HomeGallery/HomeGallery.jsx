@@ -6,9 +6,8 @@ import { useAuth } from "../../hooks/use-auth";
 import "../ItemCard/ItemCard.css";
 
 const HomeGallery = () => {
-    const auth = useAuth();
+  const auth = useAuth();
   return (
-    
     <div className="container">
         <h1 className="title">Recently Added Items:</h1>
         <div className="columns">
