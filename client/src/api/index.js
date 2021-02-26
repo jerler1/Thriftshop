@@ -16,7 +16,7 @@ const api = {
   deleteItem(id) {
     return axios.delete(`/api/inventory/${id}`).then(({ data }) => data);
   },
-  editItem(id) {
+  getItem(id) {
     return axios
       .get(`/api/inventory/${id}`)
       .then(({ data }) => {
