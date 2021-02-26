@@ -67,7 +67,7 @@ const EditItem = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(event);
-    API.addItemSubmit(formValues)
+    API.editItem(id, {...formValues, storefront: auth.user.storefront})
       .then((res) => {
         console.log(res);
       })
