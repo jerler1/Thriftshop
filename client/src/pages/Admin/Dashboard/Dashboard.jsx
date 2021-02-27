@@ -77,7 +77,7 @@ const Dashboard = (props) => {
   return (
     <div className="container">
       <header className="mb-4">
-        <h2 className="title">Welcome back, {auth.user.email}</h2>
+        <h2 className="title">Welcome back, {auth.user.firstname}</h2>
       </header>
       <section className="mb-4">
         <h2 className="title">Metrics?</h2>
