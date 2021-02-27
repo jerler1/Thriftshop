@@ -16,11 +16,6 @@
     margin-top: 12px;
 }
 
-.search-bar {
-    flex-grow: 1 !important;
-    max-width: 150% !important;
-}
-
 /* .input, .textarea {
     max-width: none !important;
     width: 200% !important;
@@ -39,7 +34,6 @@ a.vertical {
 a span {
     position: absolute;
     top: 40px;
-
     white-space: nowrap;
     font-size: 20px;
 }
