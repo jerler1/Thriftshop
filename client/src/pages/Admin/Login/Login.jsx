@@ -1,87 +1,82 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { useAuth } from "../../../hooks/use-auth";
-import "./Login.css";
+import jwt from "jsonwebtoken";
 
-const Login = (props) => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
+const Login = ({ setToken }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const history = useHistory();
-  const auth = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    auth
-      .login(formData.email, formData.password)
-      .then((data) => {
-        console.log(data);
-        setIsLoading(false);
-        history.push("/admin/dashboard");
+    axios
+      .post("/api/auth/login", { email, password })
+      .then((response) => {
+        console.log(response.data);
+        jwt.verify(
+          response.data.token,
+          process.env.REACT_APP_JWT_SIGNATURE,
+          (err, decoded) => {
+            if (err) {
+              console.log(err);
+            } else {
+              setToken(response.data.token);
+              history.push("/admin");
+            }
+          }
+        );
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
   return (
-    <div className="box">
-      <h2 className="title">Log in to your account</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="field">
-          <label className="label" htmlFor="email">
-            Email
-          </label>
-          <div className="control">
-            <input
-              className="input"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="admin@example.com"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
+    <div className="container">
+      <div className="row">
+        <div className="col s12">
+          <h1 className="center-align">Welcome! Please login to continue</h1>
+        </div>
+      </div>
+      <div className="row">
+        <form className="col s12" onSubmit={handleFormSubmit}>
+          <div className="row">
+            <div className="col s3"></div>
+            <div className="input-field col s6">
+              <input
+                id="email"
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+              <label htmlFor="title">Email</label>
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <label className="label" htmlFor="password">
-            Password
-          </label>
-          <div className="control">
-            <input
-              className="input"
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleInputChange}
-              required
-            />
+          <div className="row">
+            <div className="col s3"></div>
+            <div className="input-field col s6">
+              <input
+                id="password"
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+              <label htmlFor="title">Password</label>
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <button className={"button is-primary" + (isLoading ? " is-loading" : "")} type="submit">
-            Log In
-          </button>
-        </div>
-      </form>
+          <div className="row center-align">
+            <button className="waves-effect waves-light btn">Sign in!</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
