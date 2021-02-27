@@ -41,10 +41,14 @@ const inventorySchema = new Schema({
     default: "Available",
   },
   storefront: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: Storefront,
     required: true,
   },
+  addedAt: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 const Inventory = mongoose.model("Inventory", inventorySchema);

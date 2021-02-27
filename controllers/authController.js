@@ -52,7 +52,7 @@ module.exports = {
       })
   },
   logout: function (req, res) {
-    // destroy the session 
+    // destroy the session
     res.status(200).send();
-  }
-}
+  },
+};

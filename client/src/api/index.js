@@ -7,6 +7,12 @@ const api = {
   logout() {
     return axios.get("/api/auth/logout").then(({ data }) => data);
   },
+  getInventory({ latest = false, limit = 0} = {}) {
+    if (latest) {
+      return axios.get(`/api/inventory/latest?limit=${limit ? limit : ""}`);
+    }
+    return axios.get(`/api/inventory?limit=${limit ? limit : ""}`);
+  },
   addItemSubmit(formObject) {
     return axios.post("/api/inventory", formObject).then(({ data }) => data);
   },
@@ -15,6 +21,20 @@ const api = {
   },
   deleteItem(id) {
     return axios.delete(`/api/inventory/${id}`).then(({ data }) => data);
+  },
+  getItem(id) {
+    return axios
+      .get(`/api/inventory/${id}`)
+      .then(({ data }) => {
+        return data;
+      })
+      .catch((err) => console.log("API error: ", err));
+  },
+  editItem(id, formObject) {
+    return axios
+      .put(`/api/inventory/${id}`, formObject)
+      .then(({ data }) => data)
+      .catch((err) => console.log("API error: ", err));
   },
 };
 
