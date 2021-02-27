@@ -19,7 +19,7 @@ function useProvideAuth() {
 
   const login = (email, password) => {
     return api.login(email, password).then((data) => {
-      jwt.verify(data.token, "supersecretpassword",
+      jwt.verify(data.token, process.env.REACT_APP_SECRET,
         (err, decoded) => {
           if (err) {
             console.log(err);
