@@ -2,10 +2,10 @@ import axios from "axios";
 
 const api = {
   login(email, password) {
-    return axios.post("/api/login", { email, password }).then(({ data }) => data);
+    return axios.post("/api/auth/login", { email, password }).then(({ data }) => data);
   },
   logout() {
-    return axios.get("/api/logout").then(({ data }) => data);
+    return axios.get("/api/auth/logout").then(({ data }) => data);
   },
   getInventory({ latest = false, limit = 0} = {}) {
     if (latest) {

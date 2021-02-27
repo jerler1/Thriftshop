@@ -18,6 +18,7 @@ const employeeSchema = new Schema({
     type: String,
     trim: true,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -33,6 +34,11 @@ const employeeSchema = new Schema({
     type: Boolean,
     trim: true,
   },
+});
+
+employeeSchema.pre("save", function (next) {
+  this.email = this.email.toLowerCase();
+  next();
 });
 
 const Employee = mongoose.model("Employee", employeeSchema);
