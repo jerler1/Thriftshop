@@ -36,6 +36,11 @@ const employeeSchema = new Schema({
   },
 });
 
+employeeSchema.pre("save", function (next) {
+  this.email = this.email.toLowerCase();
+  next();
+});
+
 const Employee = mongoose.model("Employee", employeeSchema);
 
 module.exports = Employee;
