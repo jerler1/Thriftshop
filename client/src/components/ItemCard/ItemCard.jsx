@@ -4,7 +4,7 @@ import "./ItemCard.css";
 const ItemCard = (props) => {
   return (
     <div className="column is-one-quarter">
-      <div className="card">
+      <div className="card card-equal-height">
         <div className="card-image">
           <figure className="image is-4by3">
             <img
@@ -21,9 +21,9 @@ const ItemCard = (props) => {
             </div>
           </div>
 
-          <div className="content">
+          {/* <div className="content has-text-centered">
             {props.item.description}
-          </div>
+          </div> */}
           {props.children}
         </div>
       </div>
