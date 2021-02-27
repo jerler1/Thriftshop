@@ -11,7 +11,7 @@ const HomeGallery = () => {
   const [recItems, setRecItems] = useState([]);
 
   useEffect(() => {
-    api.getInventory().then((res) => setRecItems((res.data).slice(0,4)))
+    api.getInventory().then((res) => setRecItems((res.data).reverse().slice(0,4)))
   }, [])
   return (
     <div className="container">
