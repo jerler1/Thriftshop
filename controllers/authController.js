@@ -17,7 +17,9 @@ module.exports = {
       employeeToCreate.password = hashedPassword;
       db.Employee.create(employeeToCreate)
         .then((newEmployee) => {
-          const token = jwt.sign({ _id: newEmployee._id }, "supersecretpassword");
+          const token = jwt.sign({
+            _id: newEmployee._id
+          }, "supersecretpassword");
           res.json({ token });
         })
         .catch((err) => {
@@ -32,7 +34,12 @@ module.exports = {
       .then(foundUser => {
         bcrypt.compare(password, foundUser.password, (err, result) => {
           if (result) {
-            const token = jwt.sign({ _id: foundUser._id }, "supersecretpassword");
+            const token = jwt.sign({
+              _id: foundUser._id,
+              storefront: foundUser.storefront,
+              firstname: foundUser.firstname,
+              lastname: foundUser.lastname,
+            }, "supersecretpassword");
             res.json({ token });
           } else {
             res.status(401).end();
