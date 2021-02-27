@@ -19,13 +19,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar is-warning navbar-height mb-6" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-warning navbar-height mb-6 whole-nav" role="navigation" aria-label="main navigation">
       <div className="navbar-start">
-        <div className="navbar-brand">
+        <div className="navbar-brand parentBrand">
           <Link className="navbar-item navbrand vertical" to="/">
-            Thrift Shop² <span>The Thrift Shop's Shop</span>
+            Thrift Shop²<span className="childBrand2">The Thrift Shop's Shop</span>
           </Link>
-          <p className="navbar-item tag-line is-hidden-mobile">The Thrift Shop's Shop</p>
+          {/* <p className="navbar-item tag-line is-hidden-mobile">The Thrift Shop's Shop</p> */}
           <div className="navbar-burger burger-box" onClick={setActive}>
             <span></span>
             <span></span>
@@ -34,7 +34,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <SearchBar />
+      {/* <SearchBar /> */}
       <div className={isActive ? "navbar-menu is-active" : "navbar-menu"}>
         {!auth.user ? (
           <div className="navbar-end">

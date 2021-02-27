@@ -1,10 +1,10 @@
 .whole-nav {
-    height: 90px;
+    height: 80px;
 }
 
 .navbrand {
     font-weight: 600;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 .burger-box {
@@ -27,15 +27,23 @@
 } */
 
 .vertical {
-    width: 50%;
+    position: absolute;
+    left: 30px;
     float: left;
     margin-right: 10px;
 }
 a.vertical {
     text-align: center;
+    white-space: nowrap;
 }
 a span {
+    position: absolute;
+    top: 40px;
+
+    white-space: nowrap;
     font-size: 20px;
-    display: list-item;
-    list-style: none;
+}
+
+.parentBrand {
+    position: relative;
 }
