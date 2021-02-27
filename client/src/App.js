@@ -24,10 +24,10 @@ function App() {
               <Route exact path="/listing" component={Listing} />
               <Route exact path="/listing/:id" component={Detail} />
               <Route exact path="/admin" component={Login} />
-              <Route exact path="/admin/dashboard" component={Dashboard} />
-              {/* <PrivateRoute exact path="/admin/dashboard">
+              {/* <Route exact path="/admin/dashboard" component={Dashboard} /> */}
+              <PrivateRoute exact path="/admin/dashboard">
                 <Dashboard />
-              </PrivateRoute> */}
+              </PrivateRoute>
               <Route exact path="/admin/addItem" component={AddItem} />
               <Route exact path="/admin/editItem/:id" component={EditItem} />
             </Switch>
