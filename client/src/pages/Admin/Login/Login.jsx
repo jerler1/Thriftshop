@@ -9,6 +9,7 @@ const Login = (props) => {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const history = useHistory();
   const auth = useAuth();
@@ -25,13 +26,15 @@ const Login = (props) => {
         history.push("/admin/dashboard");
       })
       .catch((err) => {
-        console.log(err);
+        setIsLoading(false);
+        setError(true);
       });
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
+    setError(false);
     setFormData({
       ...formData,
       [name]: value,
@@ -39,7 +42,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="is-flex is-justify-content-center">
+    <div className="is-flex is-flex-direction-column is-align-items-center">
       <div className="box">
         <h2 className="title">Log in to your account</h2>
         <form onSubmit={handleSubmit}>
@@ -84,6 +87,12 @@ const Login = (props) => {
           </div>
         </form>
       </div>
+      {error && (
+        <div className="notification is-danger">
+          <button className="delete" onClick={() => setError(false)}></button>
+          There was an error logging in, check your email and/or password and try again.
+        </div>
+      )}
     </div>
   );
 };
