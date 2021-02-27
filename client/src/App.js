@@ -19,7 +19,6 @@ function App() {
       <ProvideAuth>
         <div>
           <Navbar />
-          <SearchBar />
           <main className="App">
             <Switch>
               <Route exact path="/" component={Home} />
