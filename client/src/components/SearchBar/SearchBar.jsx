@@ -1,18 +1,25 @@
 import React from "react";
+import "./SearchBar.css";
 
 const SearchBar = () => {
   return (
-    <div className="navbar-item search-bar">
-        <div className="field">
-          <div className="control is-expanded">
+    <div>
+      <div className="container">
+        <nav
+          className="navbar is-fullwidth"
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div className="navbar-item search-bar">
             <input
               className="input is-fullwidth search-bar"
               type="search"
               placeholder="Search..."
             />
           </div>
-        </div>
+        </nav>
       </div>
+    </div>
   );
 };
 
