@@ -2,7 +2,8 @@ import React from "react";
 
 const SearchBar = () => {
   return (
-    <div className="navbar-item search-bar">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div className="navbar-item search-bar">
         <div className="field">
           <div className="control is-expanded">
             <input
@@ -13,6 +14,7 @@ const SearchBar = () => {
           </div>
         </div>
       </div>
+    </nav>
   );
 };
 
