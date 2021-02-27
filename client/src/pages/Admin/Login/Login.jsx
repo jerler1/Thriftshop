@@ -21,8 +21,7 @@ const Login = (props) => {
 
     auth
       .login(formData.email, formData.password)
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         setIsLoading(false);
         history.push("/admin/dashboard");
       })
