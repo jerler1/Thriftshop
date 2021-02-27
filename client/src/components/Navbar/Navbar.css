@@ -25,3 +25,17 @@
     max-width: none !important;
     width: 200% !important;
 } */
+
+.vertical {
+    width: 50%;
+    float: left;
+    margin-right: 10px;
+}
+a.vertical {
+    text-align: center;
+}
+a span {
+    font-size: 20px;
+    display: list-item;
+    list-style: none;
+}

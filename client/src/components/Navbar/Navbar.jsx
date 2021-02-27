@@ -22,8 +22,8 @@ const Navbar = () => {
     <nav className="navbar is-warning navbar-height mb-6" role="navigation" aria-label="main navigation">
       <div className="navbar-start">
         <div className="navbar-brand">
-          <Link className="navbar-item navbrand" to="/">
-            Thrift Shop²
+          <Link className="navbar-item navbrand vertical" to="/">
+            Thrift Shop² <span>The Thrift Shop's Shop</span>
           </Link>
           <p className="navbar-item tag-line is-hidden-mobile">The Thrift Shop's Shop</p>
           <div className="navbar-burger burger-box" onClick={setActive}>
