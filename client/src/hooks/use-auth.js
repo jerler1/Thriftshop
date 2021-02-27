@@ -1,6 +1,7 @@
 // Inspired by https://usehooks.com/useAuth/
 import React, { useState, useContext, createContext } from "react";
 import api from "../api";
+import jwt, { decode } from "jsonwebtoken";
 
 const authContext = createContext();
 
@@ -18,8 +19,15 @@ function useProvideAuth() {
 
   const login = (email, password) => {
     return api.login(email, password).then((data) => {
-      setUser(data.user);
-      return data.user;
+      jwt.verify(data.token, "supersecretpassword",
+        (err, decoded) => {
+          if (err) {
+            console.log(err);
+            throw err;
+          } else {
+            setUser(decoded);
+          }
+        })
     });
   };
 
