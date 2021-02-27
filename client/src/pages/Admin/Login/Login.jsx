@@ -10,6 +10,7 @@ const Login = (props) => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const history = useHistory();
   const auth = useAuth();
@@ -67,10 +68,10 @@ const Login = (props) => {
             <label className="label" htmlFor="password">
               Password
             </label>
-            <div className="control">
+            <div className="control has-icons-right">
               <input
                 className="input"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
                 placeholder="Password"
@@ -78,6 +79,14 @@ const Login = (props) => {
                 onChange={handleInputChange}
                 required
               />
+              <span
+                className="icon is-small is-right is-clickable"
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
+              >
+                <i className={"fas fa-eye" + (!showPassword ? "-slash" : "")}></i>
+              </span>
             </div>
           </div>
           <div className="field">
