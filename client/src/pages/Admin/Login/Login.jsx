@@ -96,7 +96,7 @@ const Login = (props) => {
         </form>
       </div>
       {error && (
-        <div className="notification is-danger">
+        <div className="notification is-danger is-light">
           <button className="delete" onClick={() => setError(false)}></button>
           There was an error logging in, check your email and/or password and try again.
         </div>
