@@ -19,7 +19,7 @@ module.exports = {
         .then((newEmployee) => {
           const token = jwt.sign({
             _id: newEmployee._id
-          }, "supersecretpassword");
+          }, process.env.SECRET);
           res.json({ token });
         })
         .catch((err) => {
@@ -39,7 +39,7 @@ module.exports = {
               storefront: foundUser.storefront,
               firstname: foundUser.firstname,
               lastname: foundUser.lastname,
-            }, "supersecretpassword");
+            }, process.env.SECRET);
             res.json({ token });
           } else {
             res.status(401).end();
