@@ -15,20 +15,18 @@
 .hero-title {
     text-align: center;
     color: #ffe08a;
-    font-size:100px;
+    font-size:9vw;
     text-shadow:
    -0.5px -0.5px 0 rgb(42, 42, 42),  
     0.5px -0.5px 0 rgb(42, 42, 42),
     -0.5px 0.5px 0 rgb(42, 42, 42),
      0.5px 0.5px 0 rgb(42, 42, 42);
-    margin-left: -350px;
 }
 
 .hero-subtitle {
     text-align: center;
     color: rgb(170, 218, 219);
-    font-size : 60px;
-    margin-left: -280px;
+    font-size : 4vw;
     text-shadow:
    -0.5px -0.5px 0 #000,  
     0.5px -0.5px 0 #000,
