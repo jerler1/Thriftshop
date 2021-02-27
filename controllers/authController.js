@@ -28,7 +28,7 @@ module.exports = {
   },
   login: function (req, res) {
     const { email, password } = req.body;
-    db.Employee.findOne({ email: email })
+    db.Employee.findOne({ email: email.toLowerCase() })
       .then(foundUser => {
         bcrypt.compare(password, foundUser.password, (err, result) => {
           if (result) {
