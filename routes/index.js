@@ -6,11 +6,13 @@ const inventoryRoutes = require("./inventory");
 const employeeRoutes = require("./employee");
 const storefrontRoutes = require("./storefront");
 const invoiceRoutes = require("./invoice");
+const checkoutSession = require("./checkout");
 
 router.use("/auth/", authRoutes);
 router.use("/inventory", inventoryRoutes);
 router.use("/employee", employeeRoutes);
 router.use("/storefront", storefrontRoutes);
 router.use("/invoice", invoiceRoutes);
+// router.use("/checkout", checkoutSession);
 
 module.exports = router;
