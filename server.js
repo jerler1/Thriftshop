@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const session = require("express-session");
+const MongoStore = require('connect-mongo').default;
 
 const routes = require("./routes");
 
@@ -9,6 +11,14 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ entended: true }));
 app.use(express.json());
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  store: MongoStore.create({ 
+    mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/thriftshop",
+    ttL: process.env.SESSION_MAX_AGE
+  })
+}));
 
 app.use(express.static("client/build"));
 
