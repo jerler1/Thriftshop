@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ItemForm from "../../../components/ItemForm/ItemForm";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
 import "./AddItem.css";
 import API from "../../../api/index";
@@ -7,6 +8,7 @@ import API from "../../../api/index";
 const AddItem = () => {
   // Getting the user that is logged in.
   const auth = useAuth();
+  let history = useHistory();
 
   // This state holds an URL which populates the image.
   const [imageSource, setImageSource] = useState(
@@ -54,9 +56,14 @@ const AddItem = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(event);
-    API.addItemSubmit({ ...formValues, image: [imageSource], storefront: auth.user.storefront })
+    API.addItemSubmit({
+      ...formValues,
+      image: [imageSource],
+      storefront: auth.user.storefront,
+    })
       .then((res) => {
         console.log(res);
+        history.push("/admin/dashboard");
       })
       .catch((err) => {
         console.log(err);
