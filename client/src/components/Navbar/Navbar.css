@@ -31,7 +31,7 @@ a.vertical {
     text-align: center;
     white-space: nowrap;
 }
-a span {
+a span.childBrand2 {
     position: absolute;
     top: 40px;
     white-space: nowrap;
