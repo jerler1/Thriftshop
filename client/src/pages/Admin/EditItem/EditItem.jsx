@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
 import ItemForm from "../../../components/ItemForm/ItemForm";
 import "./EditItem.css";
@@ -9,6 +9,7 @@ const EditItem = () => {
   // Making the id from the URL available.
   const { id } = useParams();
   const auth = useAuth();
+  let history = useHistory();
 
   // Making the states empty slate for when the edittable item data comes in.
   const [formValues, setFormValues] = useState({
@@ -74,6 +75,7 @@ const EditItem = () => {
     API.editItem(id, { ...formValues, storefront: auth.user.storefront })
       .then((res) => {
         console.log(res);
+        history.push("/admin/dashboard");
       })
       .catch((err) => {
         console.log(err);

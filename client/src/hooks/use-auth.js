@@ -1,7 +1,7 @@
 // Inspired by https://usehooks.com/useAuth/
 import React, { useState, useContext, createContext } from "react";
 import api from "../api";
-import jwt, { decode } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const authContext = createContext();
 

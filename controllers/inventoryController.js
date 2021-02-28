@@ -31,7 +31,15 @@ module.exports = {
   },
   create: function (req, res) {
     db.Inventory.create(req.body)
-      .then((dbInventory) => res.json(dbInventory))
+      .then((dbInventory) => {
+        db.Storefront.findOneAndUpdate(
+          { _id: req.body.storefront },
+          { $push: { items: [dbInventory._id] } },
+          { new: true }
+        ).then((updatedStorefront) => {
+          res.json(dbInventory);
+        });
+      })
       .catch((err) => res.status(422).json(err));
   },
   update: function (req, res) {
