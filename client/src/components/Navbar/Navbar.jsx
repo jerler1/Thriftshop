@@ -100,9 +100,6 @@ const Navbar = () => {
               <Link to="/admin/dashboard" className="navbar-item">
                 Dashboard
               </Link>
-              <Link className="navbar-item" to="/admin/addItem">
-                Add Items
-              </Link>
               <Link to="/" className="navbar-item" onClick={handleLogout}>
                 Logout
               </Link>
