@@ -60,8 +60,10 @@ const Detail = (props) => {
                 <h3>Price: ${item.price}</h3>
                 <h3>Condition: {item.condition}</h3>
                 <br />
-                <button className="button">Hold Item</button>
-                <button className="button">Buy Now!</button>
+                {/* <button className="button">Hold Item</button> */}
+                <button className="button">Add to Cart!</button>
+                <br />
+                <br />
                 <Link to="/listing" className="button">
                   Back to gallery
                 </Link>
