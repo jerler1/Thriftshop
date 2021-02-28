@@ -9,7 +9,7 @@ import Home from "./pages/Home/Home";
 import Listing from "./pages/Listings/Listing";
 import Navbar from "./components/Navbar/Navbar";
 import { ProvideAuth } from "./hooks/use-auth";
-import SearchBar from "./components/SearchBar/SearchBar";
+// import SearchBar from "./components/SearchBar/SearchBar";
 import "./App.css";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
