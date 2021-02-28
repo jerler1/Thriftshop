@@ -1,0 +1,16 @@
+.ShoppingCart {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+}
+
+.ShoppingCart-item {
+  background-color: hsl(0, 0%, 95%);
+  border-radius: 1.25rem;
+  gap: 1rem;
+}
+
+.ShoppingCart-item figure {
+  width: 96px;
+}
