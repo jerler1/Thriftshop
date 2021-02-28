@@ -1,5 +1,5 @@
 .imageCustom {
-    width: 600px;
+    width: 60vw;
     padding-bottom: 10px;
     padding-top: 100px;
 }
@@ -9,10 +9,10 @@
     margin-right: auto;
 }
 
-.leftCol {
+/*.leftCol {
     padding-right: 0 !important;
-    /* margin-left: 150px; */
-}
+    margin-left: 150px;
+} */
 
 /* .rightCol {
     width: 70% !important;
@@ -21,5 +21,5 @@
 } */
 
 .columnsCustom {
-    padding-top: 100px;
+    /* padding-top: 100px; */
 }

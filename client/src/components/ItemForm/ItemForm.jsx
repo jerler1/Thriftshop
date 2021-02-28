@@ -26,9 +26,14 @@ const ItemForm = (props) => {
               onChange={props.handleInputChange}
             >
               <option value="Select One">Select One</option>
+              <option value="Art">Art</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Entertainment">Entertainment</option>
               <option value="Furniture">Furniture</option>
-              <option value="Blender">Blender</option>
-              <option value="Sofa">Sofa</option>
+              <option value="Games/Toys">Games/Toys</option>
+              <option value="Kitchenware">Kitchenware</option>
+              <option value="Tools/Appliances">Tools/Appliances</option>
             </select>
           </div>
         </div>
@@ -56,9 +61,12 @@ const ItemForm = (props) => {
               onChange={props.handleInputChange}
             >
               <option value="Select One">Select One</option>
-              <option value="Slightly Damaged">Slightly Damaged</option>
-              <option value="Destroyed">Destroyed</option>
-              <option value="Moderately Dinged">Moderately Dinged</option>
+              <option value="Brand New">Brand New</option>
+              <option value="Like New">Like New</option>
+              <option value="Very Good">Very Good</option>
+              <option value="Good">Good</option>
+              <option value="Acceptable">Acceptable</option>
+              <option value="Not Functioning/Just for Parts">Not Functioning/Just for Parts</option>
             </select>
           </div>
         </div>

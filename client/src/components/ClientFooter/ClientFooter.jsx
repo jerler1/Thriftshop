@@ -11,7 +11,7 @@ const ClientFooter = (props) => {
             <Link to="/listing" className="card-footer-item" onClick={() => {
                 cart.addToCart(props.item)
             }}>Add to Cart</Link>
-            <Link to="/listing" className="card-footer-item">Reserve</Link>
+            {/* <Link to="/listing" className="card-footer-item">Reserve</Link> */}
         </div>
     );
 };
