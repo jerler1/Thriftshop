@@ -26,6 +26,25 @@ const Navbar = () => {
     });
   };
 
+  const HandleCheckOut = async (event) => {
+    // Get Stripe.js instance
+    const stripe = await stripePromise;
+
+    // Calling checkout route.
+    const response = await fetch("/api/checkout", { method: "POST" });
+
+    const session = await response.json();
+
+    // Redirecting to checkout
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      console.log(result.error.message);
+    }
+  };
+
   return (
     <>
       <nav
@@ -65,7 +84,7 @@ const Navbar = () => {
               >
                 Cart
               </button>
-              <button>Checkout</button>
+              <button role="link" onClink={HandleCheckOut}>Checkout</button>
             </div>
           ) : (
             <div className="navbar-end">
