@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar is-warning navbar-height mb-6 whole-nav" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-warning navbar-height mb-6 whole-nav is-relative" role="navigation" aria-label="main navigation">
         <div className="navbar-start">
           <div className="navbar-brand parentBrand">
             <Link className="navbar-item navbrand vertical" to="/">
@@ -70,8 +70,8 @@ const Navbar = () => {
             </div>
           )}
         </div>
+        {cart.showCart && <ShoppingCart />}
       </nav>
-      {cart.showCart && <ShoppingCart />}
     </>
   );
 };
