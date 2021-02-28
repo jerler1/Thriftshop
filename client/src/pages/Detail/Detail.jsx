@@ -31,7 +31,7 @@ const Detail = (props) => {
   }, [id]);
 
   return (
-    <div>
+    <div className="container">
       <div className="tile is-ancestor">
         <div className="tile is-vertical is-8">
           <div className="tile">
