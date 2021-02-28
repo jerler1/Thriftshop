@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const stripe = require("stripe")(
-  pk_test_51IPhcIG7oxYUGKJCY4GkNWBFbgXwvNKTlmmJNeLOarK1J3DSvpvI9f65OcfurdeT8zKz3vmO5eUlnP5n3AIfKR1C00tL4qrsVY
+  "pk_test_51IPhcIG7oxYUGKJCY4GkNWBFbgXwvNKTlmmJNeLOarK1J3DSvpvI9f65OcfurdeT8zKz3vmO5eUlnP5n3AIfKR1C00tL4qrsVY"
 );
 
 router.post("/checkout", async (req, res) => {
@@ -26,3 +26,5 @@ router.post("/checkout", async (req, res) => {
 
   res.json({ id: session.id });
 });
+
+module.exports = router;

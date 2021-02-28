@@ -84,7 +84,7 @@ const Navbar = () => {
               >
                 Cart
               </button>
-              <button role="link" onClink={HandleCheckOut}>Checkout</button>
+              <button role="link" onClick={HandleCheckOut}>Checkout</button>
             </div>
           ) : (
             <div className="navbar-end">
