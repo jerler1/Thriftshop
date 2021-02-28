@@ -29,11 +29,10 @@ const ItemForm = (props) => {
               <option value="Art">Art</option>
               <option value="Clothing">Clothing</option>
               <option value="Electronics">Electronics</option>
+              <option value="Entertainment">Entertainment</option>
               <option value="Furniture">Furniture</option>
               <option value="Games/Toys">Games/Toys</option>
-              <option value="Jewelry">Jewelry</option>
               <option value="Kitchenware">Kitchenware</option>
-              <option value="Media">Media</option>
               <option value="Tools/Appliances">Tools/Appliances</option>
             </select>
           </div>
