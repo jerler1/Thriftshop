@@ -31,7 +31,9 @@ const Navbar = () => {
     const stripe = await stripePromise;
 
     // Calling checkout route.
-    const response = await fetch("/create-checkout-session", { method: "POST" });
+    const response = await fetch("/create-checkout-session", {
+      method: "POST",
+    });
 
     const session = await response.json();
 
@@ -78,13 +80,20 @@ const Navbar = () => {
                 Admin Login
               </Link>
               <button
+                className="navbar-item button cart-button"
                 onClick={() => {
                   cart.toggleShowCart();
                 }}
               >
-                Cart
+                <i className="fas fa-shopping-cart"></i> Your Cart
               </button>
-              <button role="link" onClick={HandleCheckOut}>Checkout</button>
+              <button
+                className="navbar-item button cart-button"
+                role="link"
+                onClick={HandleCheckOut}
+              >
+                Checkout
+              </button>
             </div>
           ) : (
             <div className="navbar-end">

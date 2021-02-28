@@ -7,6 +7,10 @@
     font-size: x-large;
 }
 
+.navbar-menu {
+    font-weight: bold;
+}
+
 .burger-box {
     margin-top : 7px;
 }
@@ -15,11 +19,6 @@
     margin-left: -15px;
     margin-top: 12px;
 }
-
-/* .input, .textarea {
-    max-width: none !important;
-    width: 200% !important;
-} */
 
 .vertical {
     position: absolute;
@@ -40,4 +39,25 @@ a span.childBrand2 {
 
 .parentBrand {
     position: relative;
+}
+
+@media screen and (max-width: 1023px) {
+.navbar-menu.is-active {
+    display: block;
+    margin-top: 25px;
+}
+}
+
+.cart-button {
+    background-color: #ffdd57;
+    cursor: pointer;
+    border-color: #ffdd57;
+    justify-content: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.cart-button:hover {
+    background-color: #ffd83d;
+    border-color: #ffdd57;
 }
