@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import MiniCard from "../MiniCard/MiniCard";
 import { useAuth } from "../../hooks/use-auth";
 import Carousel from "../Carousel/Carousel"
 import "../ItemCard/ItemCard.css";
 import api from "../../api";
 
 const HomeGallery = () => {
-  const auth = useAuth();
   const [recItems, setRecItems] = useState([]);
   const [featItems, setFeatItems] = useState([])
 
