@@ -23,7 +23,7 @@ const Carousel = (props) => {
       onSlideChange={() => console.log('slide change')}
     >
             {props.minis.map(recItem => {
-                return (<SwiperSlide><MiniCard key={recItem._id} item={recItem}></MiniCard></SwiperSlide>)
+                return (<SwiperSlide key={recItem._id}><MiniCard item={recItem}></MiniCard></SwiperSlide>)
             })}
     </Swiper>
   );
