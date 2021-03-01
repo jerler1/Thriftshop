@@ -2,12 +2,14 @@ import axios from "axios";
 
 const api = {
   login(email, password) {
-    return axios.post("/api/auth/login", { email, password }).then(({ data }) => data);
+    return axios
+      .post("/api/auth/login", { email, password })
+      .then(({ data }) => data);
   },
   logout() {
     return axios.get("/api/auth/logout").then(({ data }) => data);
   },
-  getInventory({ latest = false, limit = 0} = {}) {
+  getInventory({ latest = false, limit = 0 } = {}) {
     if (latest) {
       return axios.get(`/api/inventory/latest?limit=${limit ? limit : ""}`);
     }
@@ -39,6 +41,15 @@ const api = {
       .then(({ data }) => data)
       .catch((err) => console.log("API error: ", err));
   },
+  getCheckOutObject(id) {
+    return axios
+      .get(`/api/checkout/checkout-session?id=` + id)
+      .then(({ data }) => {
+        return data;
+      })
+      .catch((err) => {
+        console.log("API error: ", err);
+      });
   doSearch(query) {
     return axios.get(`/api/inventory/search?q=${query}`).then(({ data }) => data);
   },

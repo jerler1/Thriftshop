@@ -8,6 +8,8 @@ import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Listing from "./pages/Listings/Listing";
 import Navbar from "./components/Navbar/Navbar";
+import Success from "./pages/Success/Success";
+import Cancel from "./pages/Cancel/Cancel";
 import { ProvideAuth } from "./hooks/use-auth";
 import { ProvideCart } from "./hooks/useCart";
 import "./App.css";
@@ -26,12 +28,17 @@ function App() {
                 <Route exact path="/listing" component={Listing} />
                 <Route exact path="/listing/:id" component={Detail} />
                 <Route exact path="/admin" component={Login} />
-                {/* <Route exact path="/admin/dashboard" component={Dashboard} /> */}
                 <PrivateRoute exact path="/admin/dashboard">
                   <Dashboard />
                 </PrivateRoute>
-                <Route exact path="/admin/addItem" component={AddItem} />
-                <Route exact path="/admin/editItem/:id" component={EditItem} />
+                <PrivateRoute exact path="/admin/addItem">
+                  <AddItem />
+                </PrivateRoute>
+                <PrivateRoute exact path="/admin/editItem/:id">
+                  <EditItem />
+                </PrivateRoute>
+                <Route exact path="/success/" component={Success} />
+                <Route exact path="/cancel" component={Cancel} />
               </Switch>
             </main>
           </div>
