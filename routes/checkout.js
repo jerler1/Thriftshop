@@ -9,6 +9,7 @@ router.route("/checkout-session").get(async (req, res) => {
     const session = await stripe.checkout.sessions.retrieve(req.query.id, {
       expand: ["line_items"],
     });
+    console.log(session);
     return res.json(session);
   } catch (error) {
     console.log(error);
