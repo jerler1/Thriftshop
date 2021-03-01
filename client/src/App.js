@@ -8,6 +8,8 @@ import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Listing from "./pages/Listings/Listing";
 import Navbar from "./components/Navbar/Navbar";
+import Success from "./pages/Success/Success";
+import Cancel from "./pages/Cancel/Cancel";
 import { ProvideAuth } from "./hooks/use-auth";
 import { ProvideCart } from "./hooks/useCart";
 import "./App.css";
@@ -32,8 +34,8 @@ function App() {
                 </PrivateRoute>
                 <Route exact path="/admin/addItem" component={AddItem} />
                 <Route exact path="/admin/editItem/:id" component={EditItem} />
-                <Route exact path="/success/:id" component={EditItem} />
-                <Route exact path="/cancel" component={EditItem} />
+                <Route exact path="/success/:id" component={Success} />
+                <Route exact path="/cancel" component={Cancel} />
               </Switch>
             </main>
           </div>
