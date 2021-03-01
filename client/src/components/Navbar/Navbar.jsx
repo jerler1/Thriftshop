@@ -21,30 +21,6 @@ const Navbar = () => {
     });
   };
 
-<<<<<<< HEAD
-  const HandleCheckOut = async (event) => {
-    // Get Stripe.js instance
-    const stripe = await stripePromise;
-
-    // Calling checkout route.
-    const response = await fetch("/create-checkout-session", {
-      method: "POST",
-    });
-
-    const session = await response.json();
-
-    // Redirecting to checkout
-    const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (result.error) {
-      console.log(result.error.message);
-    }
-  };
-
-=======
->>>>>>> Move stripe integration to useCart hook
   return (
     <>
       <nav
@@ -78,32 +54,17 @@ const Navbar = () => {
                 Admin Login
               </Link>
               <button
-<<<<<<< HEAD
-                className="navbar-item button cart-button"
-=======
                 className="button is-warning"
                 style={{
                   height: "100%",
                 }}
->>>>>>> Move stripe integration to useCart hook
                 onClick={() => {
                   cart.toggleShowCart();
                 }}
               >
-<<<<<<< HEAD
-                <i className="fas fa-shopping-cart"></i>&nbsp;Your Cart
-              </button>
-              <button
-                className="navbar-item button cart-button"
-                role="link"
-                onClick={HandleCheckOut}
-              >
-                Checkout
-=======
                 <span className="icon">
                   <i className="fas fa-shopping-cart"></i>
                 </span>
->>>>>>> Move stripe integration to useCart hook
               </button>
             </div>
           ) : (
@@ -117,8 +78,8 @@ const Navbar = () => {
             </div>
           )}
         </div>
+        {cart.showCart && <ShoppingCart />}
       </nav>
-      {cart.showCart && <ShoppingCart />}
     </>
   );
 };
