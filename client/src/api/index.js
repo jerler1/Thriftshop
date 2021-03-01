@@ -15,6 +15,9 @@ const api = {
     }
     return axios.get(`/api/inventory?limit=${limit ? limit : ""}`);
   },
+  getSubCategory(category){
+    return axios.get(`/api/inventory/cat/${category}`);
+  },
   addItemSubmit(formObject) {
     return axios.post("/api/inventory", formObject).then(({ data }) => data);
   },
