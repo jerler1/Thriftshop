@@ -1,8 +1,10 @@
 .ShoppingCart {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  z-index: 1;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 5;
+  opacity: 0;
+  animation: fadeIn 0.15s ease-out forwards;
 }
 
 .ShoppingCart-item {
@@ -13,4 +15,12 @@
 
 .ShoppingCart-item figure {
   width: 96px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
