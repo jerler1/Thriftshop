@@ -49,15 +49,23 @@ a span.childBrand2 {
 }
 
 .cart-button {
-    background-color: #ffdd57;
+    background-color: white;
     cursor: pointer;
-    border-color: #ffdd57;
     justify-content: center;
     font-weight: bold;
-    margin-top: 20px;
+    border-color: white;
 }
 
 .cart-button:hover {
     background-color: #ffd83d;
     border-color: #ffdd57;
+}
+
+@media screen and (min-width: 1024px) {
+    .cart-button {
+        background-color: #ffdd57;
+        border-color: #ffdd57;
+        margin-top: 20px;
+    }
+    
 }

@@ -85,7 +85,7 @@ const Navbar = () => {
                   cart.toggleShowCart();
                 }}
               >
-                <i className="fas fa-shopping-cart"></i> Your Cart
+                <i className="fas fa-shopping-cart"></i>&nbsp;Your Cart
               </button>
               <button
                 className="navbar-item button cart-button"
