@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
+import { useLocation } from "react-router-dom";
 import ItemCard from "../ItemCard/ItemCard";
 import AdminFooter from "../AdminFooter/AdminFooter";
 import ClientFooter from "../ClientFooter/ClientFooter";
@@ -11,11 +12,19 @@ import Sidebar from "../Sidebar/Sidebar";
 
 const GalleryContainer = () => {
   const [invItems, setInvItems] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const auth = useAuth();
+  const location = useLocation();
+  console.log(location);
 
   useEffect(() => {
-    loadInventory();
-  }, []);
+    if (location.state) {
+      setSearchQuery(location.state.query);
+      setInvItems(location.state.items);
+    } else {
+      loadInventory();
+    }
+  }, [location]);
 
   function loadInventory() {
     api
@@ -36,6 +45,11 @@ const GalleryContainer = () => {
         <Sidebar handleCatClick={handleCatClick} allClick={loadInventory}/>
       <div className="container gallery">
         <SearchBar />
+        {searchQuery && (
+        <h2 className="title is-4 has-text-centered">
+          {invItems.length ? `Showing ${invItems.length}` : "No"} results for '{searchQuery}'.
+        </h2>
+      )}
         <div className="columns is-multiline">
           {invItems.map((invItem) => {
             return (

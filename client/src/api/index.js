@@ -39,6 +39,9 @@ const api = {
       .then(({ data }) => data)
       .catch((err) => console.log("API error: ", err));
   },
+  doSearch(query) {
+    return axios.get(`/api/inventory/search?q=${query}`).then(({ data }) => data);
+  },
 };
 
 export default api;

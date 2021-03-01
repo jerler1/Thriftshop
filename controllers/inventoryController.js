@@ -61,4 +61,13 @@ module.exports = {
       .then((dbInventory) => res.json(dbInventory))
       .catch((err) => res.status(422).json(err));
   },
+  search: function (req, res) {
+    const { q } = req.query;
+    const queryRegex = new RegExp(q, "i");
+    db.Inventory.find({ $or: [{ name: queryRegex }, { category: queryRegex }] })
+      .then((items) => {
+        res.json(items);
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 };
