@@ -6,7 +6,7 @@ import "./Listing.css"
 const Listing = (props) => {
     return (
         <div>
-            <SearchBar />
+            {/* <SearchBar /> */}
             <GalleryContainer />
         </div>
     );
