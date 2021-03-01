@@ -28,11 +28,12 @@ const GalleryContainer = () => {
     console.log(encodeURIComponent(e.target.text));
     let subCat = window.encodeURIComponent(e.target.text);
     api.getSubCategory(subCat).then((res) => setInvItems(res.data)).catch((err) => console.log(err));
-  }
+  };
+
 
   return (
     <div className="columns">
-        <Sidebar handleCatClick={handleCatClick}/>
+        <Sidebar handleCatClick={handleCatClick} allClick={loadInventory}/>
       <div className="container gallery">
         <SearchBar />
         <div className="columns is-multiline">

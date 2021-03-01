@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Sidebar.css";
 
 const Sidebar = (props) => {
 
@@ -8,6 +9,9 @@ const Sidebar = (props) => {
         <aside class="menu column is-2 thrift-sidebar">
           <p class="menu-label">Filter by Category!</p>
           <ul class="menu-list">
+              <li>
+                  <a onClick={props.allClick}>All Items</a>
+              </li>
               {categories.map((category) => {
                   return (<li><a onClick={props.handleCatClick}>{category}</a></li>)
               })}
