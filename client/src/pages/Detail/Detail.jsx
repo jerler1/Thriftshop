@@ -21,19 +21,7 @@ const Detail = (props) => {
         .then((res) => setItem(res))
         .catch((err) => console.log(err));
     };
-    function loadInventory() {
-      api
-        .getInventory()
-        .then((res) => {
-          setInvItems(res.data.filter((item) => item._id !== id).slice(0, 4));
-        })
-        .catch((err) => console.log(err));
-    };
-    
-
     loadItem();
-    loadInventory();
-    
   }, [id]);
 
   useEffect(() => {
@@ -43,7 +31,18 @@ const Detail = (props) => {
           setStore(res)
         ).catch((err) => console.log(err))
     };
-    if (item.storefront !== undefined) {loadStore()}
+    function loadInventory() {
+      api
+        .getSubCategory(item.category)
+        .then((res) => {
+          setInvItems(res.data.filter((item) => item._id !== id).slice(0, 4));
+        })
+        .catch((err) => console.log(err));
+    };
+    if (item.storefront !== undefined) {
+      loadStore();
+      loadInventory();
+    }
   }, [item])
 
   
@@ -91,6 +90,7 @@ const Detail = (props) => {
           </article>
         </div>
       </div>
+      <h1 className="title has-text-centered">Similar Items:</h1>
       <div className="tile is-ancestor">
         {invItems.map(invItem => {
             return (
