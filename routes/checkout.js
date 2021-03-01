@@ -5,10 +5,15 @@ const stripe = require("stripe")(
 );
 
 router.route("/checkout-session").get(async (req, res) => {
-  const session = await stripe.checkout.sessions.retrieve(req.query.id, {
-    expand: ["line_items"],
-  });
-  res.json(session);
+  try {
+    const session = await stripe.checkout.sessions.retrieve(req.query.id, {
+      expand: ["line_items"],
+    });
+    return res.json(session);
+  } catch (error) {
+    console.log(error);
+    return res.json(errror);
+  }
 });
 router.route("/create-checkout-session").post(async (req, res) => {
   const itemsInCheckout = req.body.cartItems.map((item) => {
@@ -24,14 +29,19 @@ router.route("/create-checkout-session").post(async (req, res) => {
       quantity: 1,
     };
   });
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    line_items: itemsInCheckout,
-    mode: "payment",
-    success_url: "https://example.com/success.html",
-    cancel_url: "https://example.com/cancel.html",
-  });
-  res.json({ id: session.id });
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items: itemsInCheckout,
+      mode: "payment",
+      success_url: "https://example.com/success.html",
+      cancel_url: "https://example.com/cancel.html",
+    });
+    return res.json({ id: session.id });
+  } catch (error) {
+    console.log(error);
+    return res.json(error);
+  }
 });
 
 module.exports = router;
