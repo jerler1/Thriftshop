@@ -32,7 +32,7 @@ function useProvideCart() {
     const stripe = await stripePromise;
 
     // Calling checkout route.
-    const { data: session } = await axios.post("/api/create-checkout-session", { cartItems });
+    const { data: session } = await axios.post("/api/checkout/create-checkout-session", { cartItems });
 
     // Redirecting to checkout
     const result = await stripe.redirectToCheckout({

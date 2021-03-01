@@ -13,6 +13,6 @@ router.use("/inventory", inventoryRoutes);
 router.use("/employee", employeeRoutes);
 router.use("/storefront", storefrontRoutes);
 router.use("/invoice", invoiceRoutes);
-router.use("/create-checkout-session", checkoutSession);
+router.use("/checkout", checkoutSession);
 
 module.exports = router;
