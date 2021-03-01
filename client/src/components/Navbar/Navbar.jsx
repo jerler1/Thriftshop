@@ -31,7 +31,7 @@ const Navbar = () => {
     const stripe = await stripePromise;
 
     // Calling checkout route.
-    const response = await fetch("/create-checkout-session", { method: "POST" });
+    const response = await fetch("/api/create-checkout-session", { method: "POST" });
 
     const session = await response.json();
 
