@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import {useCart} from "../../hooks/useCart";
 import api from "../../api/index";
 import ItemCard from "../../components/ItemCard/ItemCard";
 import ClientFooter from "../../components/ClientFooter/ClientFooter";
@@ -9,6 +10,7 @@ const Detail = (props) => {
   const [item, setItem] = useState({});
   const [invItems, setInvItems] = useState([]);
   const { id } = useParams();
+  const cart = useCart();
 
   useEffect(() => {
     function loadItem() {
@@ -29,6 +31,7 @@ const Detail = (props) => {
     loadItem();
     loadInventory();
   }, [id]);
+
 
   return (
     <div className="container">
@@ -51,17 +54,16 @@ const Detail = (props) => {
               <p className="subtitle">{item.category}</p>
               <div className="content">
                 <p>
-                  Longer description of the item: Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Aut blanditiis nobis vel in
-                  dolores facere magni reprehenderit cumque voluptatum natus
-                  nisi numquam sapiente fuga unde, quasi illum magnam labore
-                  quibusdam.
+                  Longer description of the item: {item.description}
                 </p>
                 <h3>Price: ${item.price}</h3>
                 <h3>Condition: {item.condition}</h3>
                 <br />
                 {/* <button className="button">Hold Item</button> */}
-                <button className="button">Add to Cart!</button>
+                <button className="button" onClick={() => {
+                  if (!cart.showCart) cart.toggleShowCart();
+                  cart.addToCart(item);
+                }}>Add to Cart!</button>
                 <br />
                 <br />
                 <Link to="/listing" className="button">
