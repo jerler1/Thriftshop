@@ -12,6 +12,12 @@ module.exports = {
       .then((dbInventory) => res.json(dbInventory))
       .catch((err) => res.status(422).json(err));
   },
+  findCat: function (req, res) {
+    let regex = new RegExp (req.params.category, "i")
+    db.Inventory.find({ category: regex })
+    .then((dbInventory) => res.json(dbInventory))
+    .catch((err) => res.status(422).json(err));
+  },
   findById: function (req, res) {
     db.Inventory.findById(req.params.id)
       .then((dbInventory) => res.json(dbInventory))

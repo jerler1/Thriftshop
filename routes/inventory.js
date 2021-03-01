@@ -10,6 +10,9 @@ router
 // /api/inventory/latest
 router.get('/latest', inventoryController.findLatest);
 
+// Matches with "/api/inventory/cat/:category"
+router.get('/cat/:category', inventoryController.findCat)
+
 // Matches with "/api/inventory/:id"
 router
     .route("/:id")
