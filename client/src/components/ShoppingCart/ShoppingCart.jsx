@@ -11,7 +11,6 @@ export default function ShoppingCart() {
           <>
             <ul>
               {cart.cartItems.map((item) => {
-                console.log(item);
                 return (
                   <li
                     className="p-4 mb-4 is-flex is-justify-content-space-between is-align-items-center ShoppingCart-item"
@@ -43,7 +42,9 @@ export default function ShoppingCart() {
               >
                 Close
               </button>{" "}
-              <button className="button is-primary">Check Out</button>
+              <button className="button is-primary" onClick={cart.handleCheckOut}>
+                Check Out
+              </button>
             </div>
           </>
         ) : (

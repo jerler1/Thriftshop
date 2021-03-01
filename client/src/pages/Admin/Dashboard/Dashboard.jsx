@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
 import api from "../../../api";
 import Chart from "../../../components/DashboardChart/DashboardChart";
@@ -53,6 +54,9 @@ const Dashboard = (props) => {
     <div className="container">
       <header className="mb-4">
         <h2 className="title">Welcome back, {auth.user.firstname}</h2>
+        <Link className="button is-primary is-outlined" to="/admin/addItem">
+          Add Items
+        </Link>
       </header>
       <section className="mb-4">
         <h2 className="title">Metrics?</h2>
