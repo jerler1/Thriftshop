@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import ItemCard from "../ItemCard/ItemCard";
 import AdminFooter from "../AdminFooter/AdminFooter";
 import ClientFooter from "../ClientFooter/ClientFooter";
@@ -8,12 +9,19 @@ import "../ItemCard/ItemCard.css";
 
 const GalleryContainer = () => {
   const [invItems, setInvItems] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const auth = useAuth();
+  const location = useLocation();
+  console.log(location);
 
   useEffect(() => {
-    loadInventory();
-  }, []);
-
+    if (location.state) {
+      setSearchQuery(location.state.query);
+      setInvItems(location.state.items);
+    } else {
+      loadInventory();
+    }
+  }, [location]);
 
   function loadInventory() {
     api
@@ -24,9 +32,18 @@ const GalleryContainer = () => {
 
   return (
     <div className="container">
+      {searchQuery && (
+        <h2 className="title is-4 has-text-centered">
+          {invItems.length ? `Showing ${invItems.length}` : "No"} results for '{searchQuery}'.
+        </h2>
+      )}
       <div className="columns is-multiline">
-        {invItems.map(invItem => {
-          return (<ItemCard key={invItem._id} item={invItem}>{auth.user ? <AdminFooter item={invItem}/> : <ClientFooter item={invItem}/>}</ItemCard>);
+        {invItems.map((invItem) => {
+          return (
+            <ItemCard key={invItem._id} item={invItem}>
+              {auth.user ? <AdminFooter item={invItem} /> : <ClientFooter item={invItem} />}
+            </ItemCard>
+          );
         })}
       </div>
     </div>
