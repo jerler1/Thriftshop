@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../hooks/use-auth";
 import Carousel from "../Carousel/Carousel"
 import "../ItemCard/ItemCard.css";
 import api from "../../api";
