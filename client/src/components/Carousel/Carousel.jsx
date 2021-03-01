@@ -12,7 +12,7 @@ const Carousel = (props) => {
 
   return (
     <Swiper
-      spaceBetween={10}
+      spaceBetween={25}
       slidesPerView={4}
       preloadImages={true}
       navigation
@@ -22,11 +22,9 @@ const Carousel = (props) => {
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
     >
-        <div className="columns">
             {props.minis.map(recItem => {
                 return (<SwiperSlide><MiniCard key={recItem._id} item={recItem}></MiniCard></SwiperSlide>)
             })}
-        </div>
     </Swiper>
   );
 };
