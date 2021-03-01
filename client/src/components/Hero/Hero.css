@@ -1,35 +1,28 @@
 .hero-img {
-    background-image: url("../../images/thrift-image1.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    margin-top: -3rem;
+  background-image: url("../../images/thrift-image1.webp");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin-top: -3rem;
 }
 
 .hero-block {
-    background-color: rgba(0,0,0, 0.5);
-    
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .hero-title {
-    text-align: center;
-    color: #ffe08a;
-    font-size:9vw;
-    text-shadow:
-   -0.5px -0.5px 0 rgb(42, 42, 42),  
-    0.5px -0.5px 0 rgb(42, 42, 42),
-    -0.5px 0.5px 0 rgb(42, 42, 42),
-     0.5px 0.5px 0 rgb(42, 42, 42);
+  text-align: center;
+  color: #ffe08a;
+  font-size: 9vw;
+  text-shadow: -0.5px -0.5px 0 rgb(42, 42, 42), 0.5px -0.5px 0 rgb(42, 42, 42),
+    -0.5px 0.5px 0 rgb(42, 42, 42), 0.5px 0.5px 0 rgb(42, 42, 42);
 }
 
 .hero-subtitle {
-    text-align: center;
-    color: rgb(170, 218, 219);
-    font-size : 4vw;
-    text-shadow:
-   -0.5px -0.5px 0 #000,  
-    0.5px -0.5px 0 #000,
-    -0.5px 0.5px 0 #000,
-     0.5px 0.5px 0 #000;
+  text-align: center;
+  color: rgb(170, 218, 219);
+  font-size: 4vw;
+  text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000,
+    0.5px 0.5px 0 #000;
 }
