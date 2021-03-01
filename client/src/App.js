@@ -32,6 +32,8 @@ function App() {
                 </PrivateRoute>
                 <Route exact path="/admin/addItem" component={AddItem} />
                 <Route exact path="/admin/editItem/:id" component={EditItem} />
+                <Route exact path="/success/:id" component={EditItem} />
+                <Route exact path="/cancel" component={EditItem} />
               </Switch>
             </main>
           </div>
