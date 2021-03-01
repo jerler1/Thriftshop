@@ -9,8 +9,10 @@ import "./Detail.css";
 const Detail = (props) => {
   const [item, setItem] = useState({});
   const [invItems, setInvItems] = useState([]);
+  const [store, setStore] = useState({});
   const { id } = useParams();
   const cart = useCart();
+  
 
   useEffect(() => {
     function loadItem() {
@@ -18,8 +20,7 @@ const Detail = (props) => {
         .getItem(id)
         .then((res) => setItem(res))
         .catch((err) => console.log(err));
-    }
-
+    };
     function loadInventory() {
       api
         .getInventory()
@@ -27,10 +28,26 @@ const Detail = (props) => {
           setInvItems(res.data.filter((item) => item._id !== id).slice(0, 4));
         })
         .catch((err) => console.log(err));
-    }
+    };
+    
+
     loadItem();
     loadInventory();
+    
   }, [id]);
+
+  useEffect(() => {
+    function loadStore() {
+      console.log(item.storefront)
+      api.getStorefront(item.storefront).then((res) => 
+          setStore(res)
+        ).catch((err) => console.log(err))
+    };
+    if (item.storefront !== undefined) {loadStore()}
+  }, [item])
+
+  
+
 
 
   return (
@@ -75,20 +92,21 @@ const Detail = (props) => {
         </div>
       </div>
       <div className="tile is-ancestor">
-        <div className="tile is-parent">
-          <article className="tile is-child box">
-            <p className="title">Store Name</p>
-            <p className="subtitle">Store info (address, phone number, etc.)</p>
-            <div className="content"></div>
-          </article>
-        </div>
-      </div>
-      <div className="tile is-ancestor">
         {invItems.map(invItem => {
             return (
                   <ItemCard key={invItem._id} item={invItem}><ClientFooter item={invItem}/></ItemCard>
           )
         })}
+      </div>
+      <div className="tile is-ancestor">
+        <div className="tile is-parent">
+          <article className="tile is-child box">
+            <p className="title">{store.name}</p>
+            <p className="subtitle">{store.address1}&nbsp;{store.city}&nbsp;{store.state}&nbsp;{store.zip}<br/>{store.phone}</p>
+            
+            <div className="content"></div>
+          </article>
+        </div>
       </div>
     </div>
   );
