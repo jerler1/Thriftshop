@@ -6,6 +6,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
 
 const routes = require("./routes");
+const checkout = require("./routes/checkout");
 
 const PORT = process.env.PORT || 3001;
 
@@ -80,6 +81,7 @@ app.post("/create-checkout-session", async (req, res) => {
 });
 
 app.use("/api", routes);
+// app.use(checkout);
 
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "client/build/index.html"));
