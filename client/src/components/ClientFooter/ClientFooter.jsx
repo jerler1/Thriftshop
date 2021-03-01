@@ -13,6 +13,7 @@ const ClientFooter = (props) => {
       <button
         className="button is-primary"
         onClick={() => {
+          if (!cart.showCart) cart.toggleShowCart();
           cart.addToCart(props.item);
         }}
       >
