@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import api from "../../api";
 import "./SearchBar.css";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
+  const history = useHistory();
+  const location = useLocation();
+
+  // Sync the input state
+  useEffect(() => {
+    if (location.state) {
+      setQuery(location.state.query);
+    }
+  }, [location.state]);
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -11,10 +21,14 @@ const SearchBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(query);
     api
       .doSearch(query)
-      .then((data) => console.log(data))
+      .then((data) => {
+        history.push(`/listing?q=${query}`, {
+          items: data,
+          query,
+        });
+      })
       .catch((err) => console.log(err));
   };
 
@@ -23,7 +37,7 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit}>
         <div className="field">
           <div className="control">
-            <input className="input" type="search" placeholder="Search..." val={query} onChange={handleInputChange} />
+            <input className="input" type="search" placeholder="Search..." value={query} onChange={handleInputChange} />
           </div>
         </div>
       </form>
