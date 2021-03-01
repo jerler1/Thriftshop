@@ -34,7 +34,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.17",
     "mongoose-currency": "^0.2.0",
-    "stripe": "^8.137.0",
+    "stripe": "^8.137.0"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",
