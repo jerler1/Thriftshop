@@ -117,8 +117,8 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        {cart.showCart && <ShoppingCart />}
       </nav>
+      {cart.showCart && <ShoppingCart />}
     </>
   );
 };
