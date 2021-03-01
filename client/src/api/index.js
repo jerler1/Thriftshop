@@ -37,7 +37,7 @@ const api = {
       .catch((err) => console.log("API error: ", err));
   },
   doSearch(query) {
-    return axios.get(`/api/search?q=${query}`).then(({ data }) => data);
+    return axios.get(`/api/inventory/search?q=${query}`).then(({ data }) => data);
   },
 };
 
