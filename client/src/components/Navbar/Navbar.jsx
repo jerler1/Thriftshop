@@ -4,12 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/use-auth";
 import { useCart } from "../../hooks/useCart";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import { loadStripe } from "@stripe/stripe-js";
 import "./Navbar.css";
-
-const stripePromise = loadStripe(
-  "pk_test_51IPhcIG7oxYUGKJCY4GkNWBFbgXwvNKTlmmJNeLOarK1J3DSvpvI9f65OcfurdeT8zKz3vmO5eUlnP5n3AIfKR1C00tL4qrsVY"
-);
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -26,6 +21,7 @@ const Navbar = () => {
     });
   };
 
+<<<<<<< HEAD
   const HandleCheckOut = async (event) => {
     // Get Stripe.js instance
     const stripe = await stripePromise;
@@ -47,6 +43,8 @@ const Navbar = () => {
     }
   };
 
+=======
+>>>>>>> Move stripe integration to useCart hook
   return (
     <>
       <nav
@@ -80,11 +78,19 @@ const Navbar = () => {
                 Admin Login
               </Link>
               <button
+<<<<<<< HEAD
                 className="navbar-item button cart-button"
+=======
+                className="button is-warning"
+                style={{
+                  height: "100%",
+                }}
+>>>>>>> Move stripe integration to useCart hook
                 onClick={() => {
                   cart.toggleShowCart();
                 }}
               >
+<<<<<<< HEAD
                 <i className="fas fa-shopping-cart"></i>&nbsp;Your Cart
               </button>
               <button
@@ -93,6 +99,11 @@ const Navbar = () => {
                 onClick={HandleCheckOut}
               >
                 Checkout
+=======
+                <span className="icon">
+                  <i className="fas fa-shopping-cart"></i>
+                </span>
+>>>>>>> Move stripe integration to useCart hook
               </button>
             </div>
           ) : (

@@ -43,7 +43,9 @@ export default function ShoppingCart() {
               >
                 Close
               </button>{" "}
-              <button className="button is-primary">Check Out</button>
+              <button className="button is-primary" onClick={cart.handleCheckOut}>
+                Check Out
+              </button>
             </div>
           </>
         ) : (
