@@ -37,7 +37,7 @@ function App() {
                 <PrivateRoute exact path="/admin/editItem/:id">
                   <EditItem />
                 </PrivateRoute>
-                <Route exact path="/success/:id" component={Success} />
+                <Route exact path="/success/" component={Success} />
                 <Route exact path="/cancel" component={Cancel} />
               </Switch>
             </main>
