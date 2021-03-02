@@ -102,7 +102,14 @@ router.route("/create-checkout-session").post(async (req, res) => {
         currency: "usd",
         product_data: {
           name: item.name,
-          images: item.image,
+          images: item.image.map(img => {
+            try {
+              const url = new URL(img);
+              return url;
+            } catch (e) {
+              return process.env.PRODUCTION_URL ? `${process.env.PRODUCTION_URL}${img}` : `http://localhost:3000${img}`;
+            }
+          }),
         },
         unit_amount: item.price * 100,
       },
