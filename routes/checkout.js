@@ -38,9 +38,6 @@ router.route("/checkout-session").get(async (req, res) => {
           { $push: { invoices: [newInvoice._id] } }
         )
           .then(() => {
-
-            console.log("Get ready to send mail!");
-
             nodemailer.createTestAccount((err, account) => {
               if (err) {
                 console.error('Failed to create a testing account. ' + err.message);
@@ -49,16 +46,6 @@ router.route("/checkout-session").get(async (req, res) => {
 
               console.log('Credentials obtained, sending message...');
 
-              // Create a SMTP transporter object
-              // let transporter = nodemailer.createTransport({
-              //   host: account.smtp.host,
-              //   port: account.smtp.port,
-              //   secure: account.smtp.secure,
-              //   auth: {
-              //     user: account.user,
-              //     pass: account.pass
-              //   }
-              // });
               const transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
                 port: 465,
@@ -70,11 +57,24 @@ router.route("/checkout-session").get(async (req, res) => {
 
               // Message object
               let message = {
-                from: 'Sender Name <sender@example.com>',
+                from: 'Thrift Shop <checkout@thriftshop.com>',
                 to: session?.customer_details?.email,
-                subject: "Thrift Store Reciept",
-                text: 'Hello to myself!',
-                html: '<p><b>Hello</b> to myself!</p>'
+                subject: `Thrift Store Reciept: ${session.payment_status}`,
+                html: `
+                  <!doctype html>
+                  <html>
+                  <head>
+                    <meta charset="utf-8">
+                  </head>
+                  <body>
+                    <div>
+                      <p>Invoice #: ${session.invoiceNumber}</p>
+                      <p>Customer #: ${session.customer}</p>
+                      <p>Total: $${session.amount_total / 100}</p>
+                     </div>
+                  </body>
+                  </html>
+                `,
               };
 
               transporter.sendMail(message, (err, info) => {
