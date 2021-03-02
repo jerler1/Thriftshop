@@ -16,6 +16,7 @@ router.route("/checkout-session").get(async (req, res) => {
   }
 });
 router.route("/create-checkout-session").post(async (req, res) => {
+  console.log(req.body);
   const itemsInCheckout = req.body.cartItems.map((item) => {
     return {
       price_data: {
@@ -26,6 +27,7 @@ router.route("/create-checkout-session").post(async (req, res) => {
         },
         unit_amount: item.price * 100,
       },
+
       quantity: 1,
     };
   });
@@ -34,6 +36,9 @@ router.route("/create-checkout-session").post(async (req, res) => {
       payment_method_types: ["card"],
       line_items: itemsInCheckout,
       mode: "payment",
+      metadata: {
+        store_id: req.body.cartItems[0].storefront,
+      },
       success_url: "http://localhost:3000/success?id={CHECKOUT_SESSION_ID}",
       cancel_url: "https://example.com/cancel.html",
     });
