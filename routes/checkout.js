@@ -59,7 +59,6 @@ router.route("/checkout-session").get(async (req, res) => {
                   pass: account.pass
                 }
               });
-              console.log(transporter);
 
               // Message object
               let message = {
