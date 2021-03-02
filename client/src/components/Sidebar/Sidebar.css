@@ -5,9 +5,9 @@
 
 @media only screen and (max-width: 768px) {
     .thrift-sidebar {
-        margin-left: 30px;
-        margin-top: -80px;
-        /* display: none; */
+        /* margin-left: 80px; */
+        margin-top: -100px;
+        /* justify-content: center; */
     }
 
     .mobile-list {
@@ -15,7 +15,7 @@
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
     .drop-caret {
         display: none;
     }
