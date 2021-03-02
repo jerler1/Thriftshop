@@ -43,6 +43,13 @@ const invoiceSchema = new Schema({
   },
 });
 
+invoiceSchema.add({
+  orderDate: {
+    type: Date,
+    default: Date.now,
+  }
+})
+
 const Invoice = mongoose.model("Invoice", invoiceSchema);
 
 module.exports = Invoice;
