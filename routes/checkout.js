@@ -50,13 +50,21 @@ router.route("/checkout-session").get(async (req, res) => {
               console.log('Credentials obtained, sending message...');
 
               // Create a SMTP transporter object
-              let transporter = nodemailer.createTransport({
-                host: account.smtp.host,
-                port: account.smtp.port,
-                secure: account.smtp.secure,
+              // let transporter = nodemailer.createTransport({
+              //   host: account.smtp.host,
+              //   port: account.smtp.port,
+              //   secure: account.smtp.secure,
+              //   auth: {
+              //     user: account.user,
+              //     pass: account.pass
+              //   }
+              // });
+              const transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 465,
                 auth: {
-                  user: account.user,
-                  pass: account.pass
+                  user: "nathan@castaldifamily.com",
+                  pass: "icrcjaedfilrerjd"
                 }
               });
 
