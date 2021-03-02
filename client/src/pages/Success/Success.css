@@ -1,0 +1,16 @@
+.banner {
+    margin-top: -3rem !important;
+}
+
+.postPurchaseMessages {
+    border: 1px black dotted;
+    border-radius: 8px;
+}
+
+.postPurchasePhoto {
+    margin-top: 20px;
+}
+
+.postButton {
+    margin-top: 20px;
+}
