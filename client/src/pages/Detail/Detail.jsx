@@ -43,7 +43,7 @@ const Detail = (props) => {
       loadStore();
       loadInventory();
     }
-  }, [item])
+  }, [item, id])
 
   
 
