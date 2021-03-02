@@ -9,7 +9,23 @@ router.route("/checkout-session").get(async (req, res) => {
     const session = await stripe.checkout.sessions.retrieve(req.query.id, {
       expand: ["line_items"],
     });
-    console.log(session);
+
+    const invoiceObj = {
+      storeID: "",
+      stripePaymentID: session.id,
+      customerID: session.customer,
+      customer: session.customer_details.email,
+      purchasedItems: [
+        {
+          itemDescription: session.line_items.data[0].description,
+          itemAmount: session.line_items.data[0].amount_total / 100,
+          itemQuantity: session.line_items.data[0].quantity
+        }
+      ],
+      purchaseTotal: session.amount_total / 100,
+      status: session.payment_status,
+    }
+    console.log(invoiceObj);
     return res.json(session);
   } catch (error) {
     console.log(error);
