@@ -15,7 +15,7 @@ const GalleryContainer = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const auth = useAuth();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   useEffect(() => {
     if (location.state) {
@@ -34,8 +34,8 @@ const GalleryContainer = () => {
   }
 
   const handleCatClick = (e) => {
-    console.log(encodeURIComponent(e.target.text));
-    let subCat = window.encodeURIComponent(e.target.text);
+    console.log(encodeURIComponent(e.target.name));
+    let subCat = window.encodeURIComponent(e.target.name);
     api.getSubCategory(subCat).then((res) => setInvItems(res.data)).catch((err) => console.log(err));
   };
 
