@@ -12,8 +12,8 @@ router
             port: 587,
             secure: false, // true for 465, false for other ports
             auth: {
-                user: "nathan@castaldi.dev",
-                pass: "D!X20#4Z0w$BcL$fs1h6",
+                user: "",
+                pass: "",
             },
             tls: {
                 rejectUnauthorized: false
