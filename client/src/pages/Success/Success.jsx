@@ -18,7 +18,6 @@ const Success = () => {
         console.log(err);
       });
   }, [id]);
-  console.log(checkoutObject);
   return (
     <div>
       <div className="hero has-background-info-dark banner has-text-white">
@@ -32,8 +31,8 @@ const Success = () => {
       <div className="container">
         <div className="columns">
           <div className="column mt-6">
-            <ul className="postPurchaseMessages p-4 has-background-info-light">
-              <li>Customer ID: {checkoutObject.customer}.</li>
+            <ul className="postPurchaseMessages p-4 has-background-info-light has-text-weight-medium">
+              <li>Invoice Number: {checkoutObject.invoiceNumber}.</li>
               <li>Status: {checkoutObject.payment_status}.</li>
               <li>Subtotal: {checkoutObject.amount_subtotal / 100}.</li>
               <li>
