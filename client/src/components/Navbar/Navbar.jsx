@@ -54,7 +54,7 @@ const Navbar = () => {
                 Admin Login
               </Link>
               <button
-                className="button is-warning"
+                className="button cart-button"
                 style={{
                   height: "100%",
                 }}
