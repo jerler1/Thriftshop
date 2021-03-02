@@ -50,8 +50,8 @@ router.route("/checkout-session").get(async (req, res) => {
                 host: "smtp.gmail.com",
                 port: 465,
                 auth: {
-                  user: "nathan@castaldifamily.com",
-                  pass: "icrcjaedfilrerjd"
+                  user: process.env.INVOICE_EMAIL,
+                  pass: process.env.INVOICE_PASSWORD
                 }
               });
 
