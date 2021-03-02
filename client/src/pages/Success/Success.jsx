@@ -29,8 +29,8 @@ const Success = () => {
         </div>
       </div>
       <div className="container">
-        <div className="columns">
-          <div className="column mt-6">
+        <div className="columns mt-6">
+          <div className="column leftColumnCheckout">
             <ul className="postPurchaseMessages p-4 has-background-info-light has-text-weight-medium">
               <li>Invoice Number: {checkoutObject.invoiceNumber}.</li>
               <li>Status: {checkoutObject.payment_status}.</li>
