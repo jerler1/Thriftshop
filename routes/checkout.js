@@ -125,8 +125,8 @@ router.route("/create-checkout-session").post(async (req, res) => {
       metadata: {
         store_id: req.body.cartItems[0].storefront,
       },
-      success_url: `${process.env.PRODUCTION_URL}/success?id={CHECKOUT_SESSION_ID}` || "http://localhost:3000/success?id={CHECKOUT_SESSION_ID}",
-      cancel_url: process.env.PRODUCTION_URL || "http://localhost:3000/",
+      success_url: process.env.PRODUCTION_URL ? `${process.env.PRODUCTION_URL}/success?id={CHECKOUT_SESSION_ID}` : "http://localhost:3000/success?id={CHECKOUT_SESSION_ID}",
+      cancel_url: process.env.PRODUCTION_URL ? process.env.PRODUCTION_URL : "http://localhost:3000/",
     });
     return res.json({ id: session.id });
   } catch (error) {
