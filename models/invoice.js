@@ -10,7 +10,12 @@ const invoiceSchema = new Schema({
     ref: Storefront,
     required: true,
   },
-  customerName: {
+  stripePaymentID: {
+    type: String,
+    trim: true,
+    require: true,
+  },
+  customerID: {
     type: String,
     trim: true,
     required: true,
@@ -22,16 +27,28 @@ const invoiceSchema = new Schema({
   },
   purchasedItems: [
     {
-      type: Schema.Types.ObjectId,
-      ref: Inventory,
+      itemDescription: String,
+      itemTotal: String,
+      itemQuantity: Number,
     },
   ],
+  purchaseTotal: {
+    type: Number,
+    required: true
+  },
   status: {
     type: String,
     trim: true,
     required: true,
   },
 });
+
+invoiceSchema.add({
+  orderDate: {
+    type: Date,
+    default: Date.now,
+  }
+})
 
 const Invoice = mongoose.model("Invoice", invoiceSchema);
 
