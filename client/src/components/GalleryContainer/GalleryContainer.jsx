@@ -41,7 +41,7 @@ const GalleryContainer = () => {
 
 
   return (
-    <div className="columns">
+    <div className="columns mob-columns">
         <Sidebar handleCatClick={handleCatClick} allClick={loadInventory}/>
       <div className="container gallery">
         <SearchBar />
@@ -50,7 +50,7 @@ const GalleryContainer = () => {
           {invItems.length ? `Showing ${invItems.length}` : "No"} results for '{searchQuery}'.
         </h2>
       )}
-        <div className="columns is-multiline">
+        <div className="columns is-multiline mob-columns">
           {invItems.map((invItem) => {
             return (
               <ItemCard key={invItem._id} item={invItem}>
