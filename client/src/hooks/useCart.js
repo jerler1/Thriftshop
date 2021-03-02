@@ -23,7 +23,7 @@ function useProvideCart() {
 
   const addToCart = (item) => {
     if(cartItems.some(cartItem => cartItem._id === item._id)){
-      alert("Item already in your cart!")
+      return
     } else {
       setCartItems([...cartItems, item]);
     }
