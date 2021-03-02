@@ -33,7 +33,7 @@ const Detail = (props) => {
     };
     function loadInventory() {
       api
-        .getSubCategory(item.category)
+        .getSubCategory(encodeURIComponent(item.category))
         .then((res) => {
           setInvItems(res.data.filter((item) => item._id !== id).slice(0, 4));
         })
