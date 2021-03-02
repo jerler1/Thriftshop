@@ -14,7 +14,8 @@ module.exports = {
             .catch((err) => res.status(422).json(err));
     },
     create: function (req, res) {
-        db.Invoice.create(req.body)
+        console.log(req);
+        db.Invoice.create(req)
             .then((dbInvoice) => res.json(dbInvoice))
             .catch((err) => res.status(422).json(err));
     },

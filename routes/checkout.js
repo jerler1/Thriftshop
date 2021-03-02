@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { create } = require("../controllers/invoiceController");
 
 const stripe = require("stripe")(
   "sk_test_51IPhcIG7oxYUGKJCr6L1Htx1gIPshDLMp6gW1vkTl9dEmSJeVEPxqTJwU2c0xaoEklaTwFHEycrr5dUe36h4vaxg00vAFVLSjZ"
@@ -25,7 +26,8 @@ router.route("/checkout-session").get(async (req, res) => {
       purchaseTotal: session.amount_total / 100,
       status: session.payment_status,
     }
-    console.log(invoiceObj);
+    //console.log(invoiceObj);
+    create(invoiceObj);
     return res.json(session);
   } catch (error) {
     console.log(error);
