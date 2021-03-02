@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { create } = require("../controllers/invoiceController");
+//const { create } = require("../controllers/invoiceController");
+const Invoice = require("../models/invoice");
 
 const stripe = require("stripe")(
   "sk_test_51IPhcIG7oxYUGKJCr6L1Htx1gIPshDLMp6gW1vkTl9dEmSJeVEPxqTJwU2c0xaoEklaTwFHEycrr5dUe36h4vaxg00vAFVLSjZ"
@@ -11,11 +12,11 @@ router.route("/checkout-session").get(async (req, res) => {
       expand: ["line_items"],
     });
     //console.log(session.line_items);
-    console.log(session.line_items.data);
+    //console.log(session.line_items.data);
 
 
     const invoiceObj = {
-      storeID: "",
+      storeID: "603e618ece6f293b0c07a67f",
       stripePaymentID: session.id,
       customerID: session.customer,
       customerEmail: session.customer_details.email,
@@ -31,8 +32,15 @@ router.route("/checkout-session").get(async (req, res) => {
       status: session.payment_status,
     }
     //console.log(invoiceObj);
-    create(invoiceObj);
-    return res.json(session);
+    Invoice.create(invoiceObj)
+      .then((newInvoice) => {
+        return res.json(session);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).end();
+      })
+
   } catch (error) {
     console.log(error);
     return res.json(error);
