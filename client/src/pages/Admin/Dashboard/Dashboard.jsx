@@ -20,10 +20,13 @@ const Dashboard = (props) => {
     },
   ]);
 
+  const [invoices, setInvoices] = useState([]);
+
   useEffect(() => {
     api
       .getStorefront(auth.user.storefront)
       .then((store) => {
+        setInvoices(store.invoices);
         setStoreItems(store.items);
       })
       .catch((err) => {
@@ -59,7 +62,44 @@ const Dashboard = (props) => {
         </Link>
       </header>
       <section className="mb-4">
-        <h2 className="title">Metrics?</h2>
+        <div
+          className="mb-4"
+          style={{
+            display: "flex",
+            gap: "1rem"
+          }}
+        >
+          <div
+            style={{
+              borderRadius: 8,
+              width: "50%"
+            }}
+            className="p-4 has-background-info-light"
+          >
+            <h2 className="title is-2">Total Orders</h2>
+            <p className="subtitle is-4 has-text-right">{invoices.length}</p>
+          </div>
+          <div
+            style={{
+              borderRadius: 8,
+              width: "50%"
+            }}
+            className="p-4 has-background-info-light"
+          >
+            <h2 className="title is-2">Total Revenue</h2>
+            {/** compute the actual total.*/}
+            <p className="subtitle is-4 has-text-right">$1000.00</p>
+          </div>
+        </div>
+        <h2 className="title is-4">Invoices</h2>
+        {/** This should probably be a table. */}
+        <ol style={{
+          listStyle: 'none'
+        }}>
+          {invoices.map((invoice) => (
+            <li key={invoice._id}>{invoice.customerName} $29.99</li>
+          ))}
+        </ol>
       </section>
       <Chart storeItems={storeItems} handleDelete={handleDelete} />
     </div>
