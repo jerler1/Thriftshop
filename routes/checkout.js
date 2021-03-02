@@ -35,25 +35,23 @@ router.route("/checkout-session").get(async (req, res) => {
         Storefront.findOneAndUpdate(
           { _id: newInvoice.storeID },
           { $push: { invoices: [newInvoice._id] } }
-        )
-          .then(() => {
-            return res.json(session);
-          }).catch((err) => {
-            res.status(500).end();
-          })
-      })
-      .catch((err) => {
+        ).then(() => {
+          return res.json(session);
+        }).then(() => {
+          //TODO: send invoice email
+        }).catch((err) => {
+          res.status(500).end();
+        })
+      }).catch((err) => {
         console.log(err);
         res.status(500).end();
-      })
-
+      });
   } catch (error) {
     console.log(error);
     return res.json(error);
   }
 });
 router.route("/create-checkout-session").post(async (req, res) => {
-  console.log(req.body);
   const itemsInCheckout = req.body.cartItems.map((item) => {
     return {
       price_data: {
