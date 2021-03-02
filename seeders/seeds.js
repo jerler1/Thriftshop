@@ -507,9 +507,11 @@ const invoiceSeeds = [
   {
     _id: new mongoose.Types.ObjectId(),
     storeID: storeId,
-    customerName: "John Doe",
+    stripePaymentID: "stripePaymentID",
+    customerID: "customerID",
     customerEmail: "john.doe@gmail.com",
     purchasedItems: [inventorySeeds[0]._id],
+    purchaseTotal: "10",
     status: "Paid",
   },
 ];
@@ -543,7 +545,7 @@ Employee.deleteMany({})
               Inventory.deleteMany({})
                 .then(() => Inventory.insertMany(inventorySeeds))
                 .then((inventoryData) => {
-                  // console.log(data.result.n + " records inserted!");
+                  console.log(data.result.n + " records inserted!");
                   process.exit();
                 })
                 .catch((err) => {
