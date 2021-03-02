@@ -21,7 +21,7 @@ const Success = () => {
   console.log(checkoutObject);
   return (
     <div>
-      <div className="hero is-primary banner">
+      <div className="hero has-background-info-dark banner has-text-white">
         <div className="hero-body">
           <h1 className="is-size-1 has-text-centered">
             Thank you for your purchase.
@@ -32,7 +32,7 @@ const Success = () => {
       <div className="container">
         <div className="columns">
           <div className="column mt-6">
-            <ul className="postPurchaseMessages">
+            <ul className="postPurchaseMessages p-4 has-background-info-light">
               <li>Customer ID: {checkoutObject.customer}.</li>
               <li>Status: {checkoutObject.payment_status}.</li>
               <li>Subtotal: {checkoutObject.amount_subtotal / 100}.</li>
@@ -41,11 +41,11 @@ const Success = () => {
                 {checkoutObject?.customer_details?.email}.
               </li>
             </ul>
-          <Link className="button postButton" to="/">Return to Shopping</Link>
+          <Link className="button postButton has-background-link-dark has-text-white" to="/">Return to Shopping</Link>
             
           </div>
           <div className="column">
-              <img className="postPurchasePhoto" src={photo} alt="happy shopper picture"/>
+              <img className="postPurchasePhoto" src={photo} alt="happy shopper"/>
           </div>
         </div>
       </div>

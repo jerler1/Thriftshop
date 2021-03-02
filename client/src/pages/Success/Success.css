@@ -4,10 +4,7 @@
 
 .postPurchaseMessages {
     border: 1px black dotted;
-}
-
-.postPurchaseMessage li {
-    padding-left: 10px;
+    border-radius: 8px;
 }
 
 .postPurchasePhoto {
@@ -16,5 +13,4 @@
 
 .postButton {
     margin-top: 20px;
-    background-color: aqua;
 }
