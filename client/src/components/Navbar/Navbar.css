@@ -44,7 +44,7 @@ a span.childBrand2 {
 @media screen and (max-width: 1023px) {
 .navbar-menu.is-active {
     display: block;
-    margin-top: 25px;
+    margin-top: 20px;
 }
 }
 
@@ -56,16 +56,31 @@ a span.childBrand2 {
     border-color: white;
 }
 
+.cart-button:focus:not(:active) {
+    box-shadow:  0 0 0 rgb(50 115 220 / 25%);
+}
+
+.cart-button:focus {
+    border-color: white;
+}
+
 .cart-button:hover {
-    background-color: #ffd83d;
-    border-color: #ffdd57;
+    /* background-color: #ffd83d; */
+    /* border-color: #ffdd57; */
 }
 
 @media screen and (min-width: 1024px) {
     .cart-button {
         background-color: #ffdd57;
         border-color: #ffdd57;
-        margin-top: 20px;
+    }
+    .cart-button:focus {
+        border-color: #ffdd57
+    }
+    
+    .cart-button:hover {
+        background-color: #ffd83d;
+        border-color: #ffdd57;
     }
     
 }

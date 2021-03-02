@@ -22,7 +22,12 @@ function useProvideCart() {
   const [showCart, setShowCart] = useState(false);
 
   const addToCart = (item) => {
-    setCartItems([...cartItems, item]);
+    if(cartItems.some(cartItem => cartItem._id === item._id)){
+      return
+    } else {
+      setCartItems([...cartItems, item]);
+    }
+    // setCartItems([...cartItems, item]);
   };
   const removeFromCart = (itemId) => setCartItems(cartItems.filter((item) => item._id !== itemId));
   const toggleShowCart = () => setShowCart(!showCart);

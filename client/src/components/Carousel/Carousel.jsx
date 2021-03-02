@@ -13,14 +13,25 @@ const Carousel = (props) => {
   return (
     <Swiper
       spaceBetween={25}
-      slidesPerView={4}
+      slidesPerView={1}
+      breakpoints={{
+        480: {
+          slidesPerView: 2,
+        },
+        640: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      }}
       preloadImages={true}
       navigation
       loop = {true}
       pagination={{ clickable: true }}
       scrollbar={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
+      // onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log('slide change')}
     >
             {props.minis.map(recItem => {
                 return (<SwiperSlide key={recItem._id}><MiniCard item={recItem}></MiniCard></SwiperSlide>)

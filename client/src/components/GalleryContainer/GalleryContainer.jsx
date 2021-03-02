@@ -15,7 +15,7 @@ const GalleryContainer = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const auth = useAuth();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   useEffect(() => {
     if (location.state) {
@@ -34,14 +34,14 @@ const GalleryContainer = () => {
   }
 
   const handleCatClick = (e) => {
-    console.log(encodeURIComponent(e.target.text));
-    let subCat = window.encodeURIComponent(e.target.text);
+    console.log(encodeURIComponent(e.target.name));
+    let subCat = window.encodeURIComponent(e.target.name);
     api.getSubCategory(subCat).then((res) => setInvItems(res.data)).catch((err) => console.log(err));
   };
 
 
   return (
-    <div className="columns">
+    <div className="columns mob-columns">
         <Sidebar handleCatClick={handleCatClick} allClick={loadInventory}/>
       <div className="container gallery">
         <SearchBar />
@@ -50,7 +50,7 @@ const GalleryContainer = () => {
           {invItems.length ? `Showing ${invItems.length}` : "No"} results for '{searchQuery}'.
         </h2>
       )}
-        <div className="columns is-multiline">
+        <div className="columns is-multiline mob-columns">
           {invItems.map((invItem) => {
             return (
               <ItemCard key={invItem._id} item={invItem}>
