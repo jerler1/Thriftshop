@@ -10,7 +10,12 @@ const invoiceSchema = new Schema({
     ref: Storefront,
     required: true,
   },
-  customerName: {
+  stripePaymentID: {
+    type: String,
+    trim: true,
+    require: true,
+  },
+  customerID: {
     type: String,
     trim: true,
     required: true,
@@ -26,6 +31,10 @@ const invoiceSchema = new Schema({
       ref: Inventory,
     },
   ],
+  purchaseTotal: {
+    type: Number,
+    required: true
+  },
   status: {
     type: String,
     trim: true,
