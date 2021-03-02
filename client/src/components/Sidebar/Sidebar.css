@@ -2,3 +2,42 @@
     margin-left: 30px;
     padding-top: 80px;
 }
+
+@media only screen and (max-width: 768px) {
+    .thrift-sidebar {
+        margin-left: 30px;
+        margin-top: -80px;
+        /* display: none; */
+    }
+
+    .mobile-list {
+        display:none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .drop-caret {
+        display: none;
+    }
+}
+
+
+.side-buttons {
+    border: none;
+    width: 100%;
+    justify-content: left;
+}
+
+.side-buttons:hover {
+    background-color: #f5f5f5;
+}
+
+.side-buttons:focus {
+    border-color: white;
+    font-weight: bold;
+}
+
+.button:focus:not(:active) {
+    box-shadow:  0 0 0 rgb(50 115 220 / 25%);
+}
+
