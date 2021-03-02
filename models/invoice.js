@@ -27,8 +27,9 @@ const invoiceSchema = new Schema({
   },
   purchasedItems: [
     {
-      type: String,
-      trim: true,
+      itemDescription: String,
+      itemTotal: String,
+      itemQuantity: Number,
     },
   ],
   purchaseTotal: {
