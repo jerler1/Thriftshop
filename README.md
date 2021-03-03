@@ -4,6 +4,8 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/jerler1/Thriftshop?color=critical&logo=github&style=for-the-badge)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/jerler1/ThriftShop/main?color=critical&logo=github&style=for-the-badge)
 
+![Header](./client/src/images/header.png)
+
 ## **Table of Contents**
 
 ---
@@ -41,13 +43,15 @@ Thrift Shop's Shop can perform the following:
 - Cloudinary integration
 - Full CRUD inventory.
 
+<img src="./client/src/images/cart.png" width="350px">
+
+
 ## **Usage**
 
 ---
 
-When you access the deployed website or start the react server.  There are a number of columns (Image, Name, Phone, Email, and DOB) 
-and a search input.  If you type anything into the search input it will filter the results that are shown below.  If you click any of the
-table headers it will sort that column.  There isn't a sort on the image column.
+There is an admin dashboard that requires authentication to access.  If you wish to peruse the dashboard please email me at jerler.dev@gmail.com.
+  
 ![Screenshot](./public/applicationScreenshot.png)
 
 Link to the deployed website can be found [here](https://thawing-everglades-67828.herokuapp.com/).
