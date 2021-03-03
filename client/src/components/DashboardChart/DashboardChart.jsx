@@ -25,12 +25,12 @@ const DashboardChart = ({ storeItems, handleDelete }) => {
       <tbody>
         {storeItems.length ? (
           storeItems.map((item) => (
-            <tr key={item.id}>
+            <tr key={item._id}>
               {tableHeadings.map((heading, i) => {
                 if (heading === "image") {
                   return (
-                    <td>
-                      <img key={i} src={item.image[0]} alt="product" width="100" />
+                    <td key={i}>
+                      <img src={item.image[0]} alt="product" width="100" />
                     </td>
                   );
                 } else {
