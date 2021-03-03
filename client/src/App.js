@@ -36,7 +36,7 @@ function App() {
                 <PrivateRoute exact path="/admin/editItem/:id">
                   <EditItem />
                 </PrivateRoute>
-                <Route exact path="/success/" component={Success} />
+                <Route path="/success" component={Success} />
               </Switch>
             </main>
           </div>
