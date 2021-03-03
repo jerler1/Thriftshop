@@ -15,6 +15,9 @@ const api = {
     }
     return axios.get(`/api/inventory?limit=${limit ? limit : ""}`);
   },
+  getAvailInventory() {
+    return axios.get("/api/inventory/available");
+  },
   getSubCategory(category) {
     return axios.get(`/api/inventory/cat/${category}`);
   },
