@@ -97,7 +97,7 @@ This software uses the following packages:
 
 ---
 
-Copyright (c) 2005-2020 David Heinemeier Hansson
+Copyright (c) 2021 John Erler, Bradley Donahue, Nathan Castaldi, Spencer Vaughan.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
