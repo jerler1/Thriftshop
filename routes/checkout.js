@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Invoice = require("../models/invoice");
+const Inventory = require("../models/inventory");
 const Storefront = require("../models/storefront");
 const nodemailer = require("nodemailer");
 
@@ -29,6 +30,14 @@ router.route("/checkout-session").get(async (req, res) => {
       purchaseTotal: session.amount_total / 100,
       status: session.payment_status,
     }
+
+    const itemIdList = JSON.parse(session.metadata.item_id);
+    itemIdList.forEach(async (itemSold) => {
+      await Inventory.findOneAndUpdate(
+        { _id: itemSold.itemId },
+        { status: "Sold" }
+      )
+    });
 
     Invoice.create(invoiceObj)
       .then((newInvoice) => {
@@ -104,6 +113,12 @@ router.route("/checkout-session").get(async (req, res) => {
   }
 });
 router.route("/create-checkout-session").post(async (req, res) => {
+  console.log(req.body.cartItems);
+  const itemIdList = req.body.cartItems.map((item) => {
+    return {
+      itemId: item._id,
+    }
+  })
   const itemsInCheckout = req.body.cartItems.map((item) => {
     return {
       price_data: {
@@ -121,7 +136,6 @@ router.route("/create-checkout-session").post(async (req, res) => {
         },
         unit_amount: item.price * 100,
       },
-
       quantity: 1,
     };
   });
@@ -132,6 +146,7 @@ router.route("/create-checkout-session").post(async (req, res) => {
       mode: "payment",
       metadata: {
         store_id: req.body.cartItems[0].storefront,
+        item_id: JSON.stringify(itemIdList),
       },
       success_url: process.env.PRODUCTION_URL ? `${process.env.PRODUCTION_URL}/success?id={CHECKOUT_SESSION_ID}` : "http://localhost:3000/success?id={CHECKOUT_SESSION_ID}",
       cancel_url: process.env.PRODUCTION_URL ? process.env.PRODUCTION_URL : "http://localhost:3000/",
