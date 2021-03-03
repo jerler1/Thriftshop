@@ -4,12 +4,12 @@ import "./DashboardChart.css";
 
 const DashboardChart = ({ storeItems, handleDelete }) => {
   let tableHeadings = [
-    "IMAGE",
-    "STATUS",
-    "NAME",
-    "CATEGORY",
-    "PRICE",
-    "CONDITION",
+    "image",
+    "status",
+    "name",
+    "category",
+    "price",
+    "condition",
   ];
 
   return (
