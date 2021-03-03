@@ -80,6 +80,9 @@ const Login = (props) => {
               />
               <span
                 className="icon is-small is-right is-clickable"
+                style={{
+                  pointerEvents: "all",
+                }}
                 onClick={() => {
                   setShowPassword(!showPassword);
                 }}
