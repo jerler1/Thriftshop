@@ -1,4 +1,4 @@
-# **Thrift Store²**
+b# **Thrift Store²**
 ![GitHub Repo stars](https://img.shields.io/github/stars/jerler1/Thriftshop?logo=GitHub&color=critical&style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/jerler1/Thriftshop?color=critical&logo=github&style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/jerler1/Thriftshop?color=critical&logo=github&style=for-the-badge)
@@ -15,7 +15,6 @@
 1. [Usage](#usage)
 1. [Credits](#credits)
 1. [Contributors](#contributors)
-1. [See Also](#seeAlso)
 1. [License](#license)
 
 ## **Installation**
@@ -36,14 +35,15 @@ To clone and run this application, you will need [Git](https://git-scm.com/) and
 
 Thrift Shop's Shop can perform the following:
 
-- Display a storefront
-- Responsive cart
-- Mobile responsiveness
-- Stripe integration
-- Cloudinary integration
-- Full CRUD inventory.
+- Display a storefront.
+- Responsive cart.
+- Mobile responsiveness.
+- Stripe integration.
+- Cloudinary integration.
+- Full CRUD inventory and employee management.
+- HTML based invoice email.
 
-<img src="./client/src/images/cart.png" width="350px">
+<img src="./client/src/images/cart.png" width="750px">
 
 
 ## **Usage**
@@ -51,8 +51,21 @@ Thrift Shop's Shop can perform the following:
 ---
 
 There is an admin dashboard that requires authentication to access.  If you wish to peruse the dashboard please email me at jerler.dev@gmail.com.
-  
-![Screenshot](./public/applicationScreenshot.png)
+
+In the admin dashboard you can add/edit items via a cloudinary widget combined with a form.  On the main page of the admin dashboard the options to delete and edit items are on the right side in button format.
+
+The credit cards used for testing purposes at checkout are:
+
+|      | Credit Card          | CCV | Date            | Misc                                           |
+|------|----------------------|-----|-----------------|------------------------------------------------|
+| Pass | 4242 4242 4242 4242  | Any | Any future date |                                                |
+| Fail | 4000 0000 0000 0069  | Any | Any future date | Charge is declined with an expired card code.  |
+| Fail | 4000 0000 0000 0127  | Any | Any future date | Charge is declined with an incorrect CCV code. |
+</br>
+
+<img src="./client/src/images/admin.png" width="750px">
+
+
 
 Link to the deployed website can be found [here](https://thawing-everglades-67828.herokuapp.com/).
 
