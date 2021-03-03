@@ -11,7 +11,10 @@ router
 router.get('/latest', inventoryController.findLatest);
 
 // Matches with "/api/inventory/cat/:category"
-router.get('/cat/:category', inventoryController.findCat)
+router.get('/cat/:category', inventoryController.findCat);
+
+// /api/inventory/available
+router.get('/available', inventoryController.findAvail);
 
 // /api/inventory/search
 router.get('/search', inventoryController.search);

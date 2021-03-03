@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
+const path = require("path");
 
 const routes = require("./routes");
 
@@ -40,9 +41,11 @@ mongoose
 
 app.use("/api", routes);
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "client/build/index.html"));
-// });
+if (process.env.PRODUCTION_URL) {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

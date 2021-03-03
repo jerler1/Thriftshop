@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Invoice = require("../models/invoice");
+const Inventory = require("../models/inventory");
 const Storefront = require("../models/storefront");
 const nodemailer = require("nodemailer");
 
@@ -30,6 +31,14 @@ router.route("/checkout-session").get(async (req, res) => {
       status: session.payment_status,
     }
 
+    const itemIdList = JSON.parse(session.metadata.item_id);
+    itemIdList.forEach(async (itemSold) => {
+      await Inventory.findOneAndUpdate(
+        { _id: itemSold.itemId },
+        { status: "Sold" }
+      )
+    });
+
     Invoice.create(invoiceObj)
       .then((newInvoice) => {
         session.invoiceNumber = newInvoice._id;
@@ -38,9 +47,6 @@ router.route("/checkout-session").get(async (req, res) => {
           { $push: { invoices: [newInvoice._id] } }
         )
           .then(() => {
-
-            console.log("Get ready to send mail!");
-
             nodemailer.createTestAccount((err, account) => {
               if (err) {
                 console.error('Failed to create a testing account. ' + err.message);
@@ -49,24 +55,35 @@ router.route("/checkout-session").get(async (req, res) => {
 
               console.log('Credentials obtained, sending message...');
 
-              // Create a SMTP transporter object
-              let transporter = nodemailer.createTransport({
-                host: account.smtp.host,
-                port: account.smtp.port,
-                secure: account.smtp.secure,
+              const transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 465,
                 auth: {
-                  user: account.user,
-                  pass: account.pass
+                  user: process.env.INVOICE_EMAIL,
+                  pass: process.env.INVOICE_PASSWORD
                 }
               });
 
               // Message object
               let message = {
-                from: 'Sender Name <sender@example.com>',
+                from: 'Thrift Shop <checkout@thriftshop.com>',
                 to: session?.customer_details?.email,
-                subject: "Thrift Store Reciept",
-                text: 'Hello to myself!',
-                html: '<p><b>Hello</b> to myself!</p>'
+                subject: `Thrift Store Reciept: ${session.payment_status}`,
+                html: `
+                  <!doctype html>
+                  <html>
+                  <head>
+                    <meta charset="utf-8">
+                  </head>
+                  <body>
+                    <div>
+                      <p>Invoice #: ${session.invoiceNumber}</p>
+                      <p>Customer #: ${session.customer}</p>
+                      <p>Total: $${session.amount_total / 100}</p>
+                     </div>
+                  </body>
+                  </html>
+                `,
               };
 
               transporter.sendMail(message, (err, info) => {
@@ -96,6 +113,12 @@ router.route("/checkout-session").get(async (req, res) => {
   }
 });
 router.route("/create-checkout-session").post(async (req, res) => {
+  console.log(req.body.cartItems);
+  const itemIdList = req.body.cartItems.map((item) => {
+    return {
+      itemId: item._id,
+    }
+  })
   const itemsInCheckout = req.body.cartItems.map((item) => {
     return {
       price_data: {
@@ -113,7 +136,6 @@ router.route("/create-checkout-session").post(async (req, res) => {
         },
         unit_amount: item.price * 100,
       },
-
       quantity: 1,
     };
   });
@@ -124,9 +146,10 @@ router.route("/create-checkout-session").post(async (req, res) => {
       mode: "payment",
       metadata: {
         store_id: req.body.cartItems[0].storefront,
+        item_id: JSON.stringify(itemIdList),
       },
-      success_url: `${process.env.PRODUCTION_URL}/success?id={CHECKOUT_SESSION_ID}` || "http://localhost:3000/success?id={CHECKOUT_SESSION_ID}",
-      cancel_url: process.env.PRODUCTION_URL || "http://localhost:3000/",
+      success_url: process.env.PRODUCTION_URL ? `${process.env.PRODUCTION_URL}/success?id={CHECKOUT_SESSION_ID}` : "http://localhost:3000/success?id={CHECKOUT_SESSION_ID}",
+      cancel_url: process.env.PRODUCTION_URL ? process.env.PRODUCTION_URL : "http://localhost:3000/",
     });
     return res.json({ id: session.id });
   } catch (error) {

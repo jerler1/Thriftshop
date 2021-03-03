@@ -7,10 +7,11 @@
     border-radius: 8px;
 }
 
-.postPurchasePhoto {
-    margin-top: 20px;
-}
-
 .postButton {
     margin-top: 20px;
+    border-radius: 15px;
+}
+
+.leftColumnCheckout {
+    text-align: center;
 }

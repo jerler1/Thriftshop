@@ -76,13 +76,13 @@ const Detail = (props) => {
                 <h3>Condition: {item.condition}</h3>
                 <br />
                 {/* <button className="button">Hold Item</button> */}
-                <button className="button" onClick={() => {
+                <button className="button is-primary dtl-btn" onClick={() => {
                   if (!cart.showCart) cart.toggleShowCart();
                   cart.addToCart(item);
                 }}>Add to Cart!</button>
                 <br />
                 <br />
-                <Link to="/listing" className="button">
+                <Link to="/listing" className="button is-danger dtl-btn">
                   Back to gallery
                 </Link>
               </div>
