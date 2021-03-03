@@ -1,10 +1,10 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
-const path = require("path");
 
 const routes = require("./routes");
 
