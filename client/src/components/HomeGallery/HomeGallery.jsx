@@ -8,10 +8,10 @@ const HomeGallery = () => {
   const [featItems, setFeatItems] = useState([])
 
   useEffect(() => {
-    api.getInventory().then((res) => {
+    api.getAvailInventory().then((res) => {
       setRecItems((res.data).reverse().slice(0,12));
     });
-    api.getInventory().then((res) => {
+    api.getAvailInventory().then((res) => {
       setFeatItems((res.data).slice(0,12));
     })
   }, [])

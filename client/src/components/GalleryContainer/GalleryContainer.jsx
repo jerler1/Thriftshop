@@ -28,7 +28,7 @@ const GalleryContainer = () => {
 
   function loadInventory() {
     api
-      .getInventory()
+      .getAvailInventory()
       .then((res) => setInvItems(res.data))
       .catch((err) => console.log(err));
   }

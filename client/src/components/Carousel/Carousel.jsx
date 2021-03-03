@@ -28,10 +28,7 @@ const Carousel = (props) => {
       preloadImages={true}
       navigation
       loop = {true}
-      pagination={{ clickable: true }}
       scrollbar={{ clickable: true }}
-      // onSwiper={(swiper) => console.log(swiper)}
-      // onSlideChange={() => console.log('slide change')}
     >
             {props.minis.map(recItem => {
                 return (<SwiperSlide key={recItem._id}><MiniCard item={recItem}></MiniCard></SwiperSlide>)
