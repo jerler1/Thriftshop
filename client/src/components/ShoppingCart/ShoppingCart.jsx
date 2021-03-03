@@ -6,6 +6,17 @@ export default function ShoppingCart() {
   return (
     <div className="ShoppingCart">
       <div className="box">
+        <button
+          className="delete"
+          style={{
+            position: "relative",
+            left: "-10px",
+            top: "-10px",
+          }}
+          onClick={() => {
+            cart.toggleShowCart();
+          }}
+        ></button>
         <h3 className="title is-3">Shopping Cart</h3>
         {cart.cartItems.length ? (
           <>
