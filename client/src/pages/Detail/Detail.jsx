@@ -70,7 +70,7 @@ const Detail = (props) => {
               <p className="subtitle">{item.category}</p>
               <div className="content">
                 <p>
-                  Longer description of the item: {item.description}
+                  Item details: {item.description}
                 </p>
                 <h3>Price: ${item.price}</h3>
                 <h3>Condition: {item.condition}</h3>

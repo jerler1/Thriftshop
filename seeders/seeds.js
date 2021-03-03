@@ -545,7 +545,7 @@ Employee.deleteMany({})
               Inventory.deleteMany({})
                 .then(() => Inventory.insertMany(inventorySeeds))
                 .then((inventoryData) => {
-                  console.log(data.result.n + " records inserted!");
+                  // console.log(data.result.n + " records inserted!");
                   process.exit();
                 })
                 .catch((err) => {

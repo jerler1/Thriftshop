@@ -1,9 +1,10 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./MiniCard.css";
 
 const MiniCard = (props) => {
   return (
-    <a href={`/listing/${props.item._id}`}className="column is-one-quarter mini-slide">
+    <Link to={`/listing/${props.item._id}`}className="column is-one-quarter mini-slide">
       <div className="card card-equal-height">
         <div className="card-image">
           <figure className="image is-4by3">
@@ -18,7 +19,7 @@ const MiniCard = (props) => {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 
