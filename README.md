@@ -1,4 +1,4 @@
-b# **Thrift Store²**
+**Thrift Store²**
 ![GitHub Repo stars](https://img.shields.io/github/stars/jerler1/Thriftshop?logo=GitHub&color=critical&style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/jerler1/Thriftshop?color=critical&logo=github&style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/jerler1/Thriftshop?color=critical&logo=github&style=for-the-badge)
