@@ -19,7 +19,7 @@ module.exports = {
   },
   findCat: function (req, res) {
     let regex = new RegExp(req.params.category, "i");
-    db.Inventory.find({ category: regex })
+    db.Inventory.find({ category: regex, status: "Available" })
       .then((dbInventory) => res.json(dbInventory))
       .catch((err) => res.status(422).json(err));
   },
