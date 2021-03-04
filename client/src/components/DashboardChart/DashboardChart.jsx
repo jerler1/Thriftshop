@@ -3,21 +3,14 @@ import { Link } from "react-router-dom";
 import "./DashboardChart.css";
 
 const DashboardChart = ({ storeItems, handleDelete }) => {
-  let tableHeadings = [
-    "image",
-    "status",
-    "name",
-    "category",
-    "price",
-    "condition",
-  ];
+  let tableHeadings = ["image", "status", "name", "category", "price", "condition"];
 
   return (
     <table className="table is-striped is-hoverable is-fullwidth">
       <thead>
         <tr>
           {tableHeadings.map((heading, i) => (
-            <th key={i}>{heading}</th>
+            <th key={i}>{heading.toUpperCase()}</th>
           ))}
           <th></th>
         </tr>
@@ -44,10 +37,7 @@ const DashboardChart = ({ storeItems, handleDelete }) => {
                       <i className="far fa-edit"></i>
                     </span>
                   </Link>
-                  <span
-                    className="icon has-text-danger is-clickable"
-                    onClick={() => handleDelete(item._id)}
-                  >
+                  <span className="icon has-text-danger is-clickable" onClick={() => handleDelete(item._id)}>
                     <i className="fas fa-trash-alt"></i>
                   </span>
                 </span>
