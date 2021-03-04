@@ -83,10 +83,10 @@ const EditItem = () => {
   };
 
   return (
-    <div>
-      <div className="columns center columnsCustom">
+    <div className="container">
+      <div className="columns center">
         <div className="column leftCol">
-          <figure className="imageCustom center">
+          <figure className="center mt-6 mr-4">
             <img src={formValues.imageSource} alt="placeholder" />
           </figure>
           <button className="button is-info center" onClick={handleClick}>
@@ -94,11 +94,7 @@ const EditItem = () => {
           </button>
         </div>
         <div className="column rightCol">
-          <ItemForm
-            {...formValues}
-            handleInputChange={handleInputChange}
-            handleFormSubmit={handleFormSubmit}
-          />
+          <ItemForm {...formValues} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
         </div>
       </div>
     </div>
