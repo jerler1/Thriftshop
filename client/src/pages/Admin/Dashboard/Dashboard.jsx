@@ -71,6 +71,8 @@ const Dashboard = (props) => {
     dateStyle: "medium",
   });
 
+  const invoicesToShow = [...invoices];
+
   return (
     <div className="container">
       <header className="mb-4">
@@ -117,7 +119,7 @@ const Dashboard = (props) => {
             </tr>
           </thead>
           <tbody>
-            {invoices.map((invoice) => (
+            {invoicesToShow.reverse().map((invoice) => (
               <tr key={invoice._id}>
                 <td>{dateFormatter.format(new Date(invoice.orderDate))}</td>
                 <td>{invoice.customerEmail}</td>
