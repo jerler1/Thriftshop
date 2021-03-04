@@ -21,6 +21,8 @@ const Dashboard = (props) => {
   ]);
 
   const [invoices, setInvoices] = useState([]);
+  const [pageOffset, setPageOffset] = useState(0);
+  const pageSize = 10;
 
   useEffect(() => {
     api
@@ -53,6 +55,18 @@ const Dashboard = (props) => {
       });
   };
 
+  const handlePageForward = () => {
+    setPageOffset(pageOffset + pageSize);
+  };
+
+  const handlePageBack = () => {
+    setPageOffset(pageOffset - pageSize);
+    // setPageOffset((current) => {
+    //   let newVal = current - pageSize;
+    //   return newVal < 0 ? 0 : newVal;
+    // });
+  };
+
   const totalRevenue = invoices.reduce((total, invoice) => {
     return (
       total +
@@ -70,6 +84,8 @@ const Dashboard = (props) => {
   const dateFormatter = Intl.DateTimeFormat([], {
     dateStyle: "medium",
   });
+
+  const invoicesToShow = [...invoices].reverse().slice(pageOffset, pageOffset + pageSize);
 
   return (
     <div className="container">
@@ -102,12 +118,30 @@ const Dashboard = (props) => {
             className="p-4 has-background-info-light"
           >
             <h2 className="title is-2">Total Revenue</h2>
-            {/** compute the actual total.*/}
             <p className="subtitle is-4 has-text-right">{currencyFormatter.format(totalRevenue / 100)}</p>
           </div>
         </div>
         <h2 className="title is-4">Invoices</h2>
-        {/** This should probably be a table. */}
+        {/** TODO: Refactor this? */}
+        <div className="is-flex" style={{ gap: "1rem" }}>
+          <button className="button is-info" onClick={handlePageBack} disabled={pageOffset === 0}>
+            <span className="icon">
+              <i className="fas fa-long-arrow-alt-left"></i>
+            </span>
+          </button>
+          <button
+            className="button is-info"
+            onClick={handlePageForward}
+            disabled={pageOffset + pageSize >= invoices.length}
+          >
+            <span className="icon">
+              <i className="fas fa-long-arrow-alt-right"></i>
+            </span>
+          </button>
+          <span>
+            Showing {pageOffset + 1} to {pageOffset + invoicesToShow.length} of {invoices.length}.
+          </span>
+        </div>
         <table className="table is-striped is-hoverable is-fullwidth">
           <thead>
             <tr>
@@ -117,7 +151,7 @@ const Dashboard = (props) => {
             </tr>
           </thead>
           <tbody>
-            {invoices.map((invoice) => (
+            {invoicesToShow.map((invoice) => (
               <tr key={invoice._id}>
                 <td>{dateFormatter.format(new Date(invoice.orderDate))}</td>
                 <td>{invoice.customerEmail}</td>
