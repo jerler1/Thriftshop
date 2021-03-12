@@ -1,9 +1,9 @@
 # **Thrift Store²**
 
-![GitHub Repo stars](https://img.shields.io/github/stars/jerler1/Thriftshop?logo=GitHub&color=critical&style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/jerler1/Thriftshop?color=critical&logo=github&style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/jerler1/Thriftshop?color=critical&logo=github&style=for-the-badge)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/jerler1/ThriftShop/main?color=critical&logo=github&style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/jerler1/Thriftshop?logo=GitHub&color=blue&style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/jerler1/Thriftshop?color=blue&logo=github&style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/jerler1/Thriftshop?color=blue&logo=github&style=for-the-badge)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/jerler1/ThriftShop/main?color=blue&logo=github&style=for-the-badge)
 
 ![Header](./client/src/images/header.png)
 
